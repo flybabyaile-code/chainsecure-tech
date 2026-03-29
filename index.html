@@ -1,0 +1,124 @@
+风控解除</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 链上资产追回</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 数据恢复服务</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 法律维权服务</a>
+            </div>
+            
+            <div class="link-group">
+                <h4>技术支持</h4>
+                <a href="#"><i class="fas fa-chevron-right"></i> 技术问题解决</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 安全审计服务</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 智能合约审计</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 钱包安全评估</a>
+            </div>
+            
+            <div class="link-group">
+                <h4>联系我们</h4>
+                <a href="#"><i class="fas fa-chevron-right"></i> Telegram客服</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 微信客服</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 邮箱咨询</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> 紧急电话</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2026 链安科技 (ChainSecure). 保留所有权利。</p>
+        <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">
+            专业区块链安全服务 · 24/7全球响应 · 成功率99.2%
+        </p>
+    </div>
+</footer>
+
+<script>
+// 交互效果
+document.addEventListener('DOMContentLoaded', function() {
+    // 卡片悬停效果
+    const cards = document.querySelectorAll('.service-card, .case-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+            this.style.boxShadow = '0 20px 40px rgba(0, 123, 255, 0.25)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 10px 30px rgba(0, 123, 255, 0.2)';
+        });
+    });
+    
+    // 终端模拟输出
+    const terminalLines = document.querySelectorAll('.terminal-line');
+    terminalLines.forEach((line, index) => {
+        line.style.opacity = '0';
+        line.style.transform = 'translateY(10px)';
+        
+        setTimeout(() => {
+            line.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            line.style.opacity = '1';
+            line.style.transform = 'translateY(0)';
+        }, index * 300);
+    });
+    
+    // 统计数据动画
+    const statValues = document.querySelectorAll('.stat-value');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const stat = entry.target;
+                const finalText = stat.textContent;
+                const isPercentage = finalText.includes('%');
+                const isCurrency = finalText.includes('$');
+                const isTime = finalText.includes('/');
+                
+                let finalNumber = parseFloat(finalText.replace(/[^0-9.]/g, ''));
+                let currentNumber = 0;
+                const increment = finalNumber / 30;
+                
+                const timer = setInterval(() => {
+                    currentNumber += increment;
+                    if (currentNumber >= finalNumber) {
+                        stat.textContent = finalText;
+                        clearInterval(timer);
+                    } else {
+                        let displayValue;
+                        if (isPercentage) {
+                            displayValue = Math.floor(currentNumber) + '%';
+                        } else if (isCurrency) {
+                            displayValue = '$' + Math.floor(currentNumber).toLocaleString() + '+';
+                        } else if (isTime) {
+                            displayValue = finalText;
+                        } else {
+                            displayValue = Math.floor(currentNumber).toLocaleString() + '+';
+                        }
+                        stat.textContent = displayValue;
+                    }
+                }, 30);
+                
+                observer.unobserve(stat);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statValues.forEach(stat => observer.observe(stat));
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
