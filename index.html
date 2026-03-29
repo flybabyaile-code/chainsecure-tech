@@ -8,8 +8,6 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial;}
 body{background:#ffffff;color:#111;}
-
-/* 上半部分：白色背景 */
 .hero-section{background:radial-gradient(circle at 75% 30%,rgba(0,123,255,0.18),transparent 40%),#fff;min-height:100vh;}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;border-bottom:1px solid #eee;position:sticky;top:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(15px);z-index:1000;}
 .logo{font-weight:600;font-size:18px;color:#007BFF;display:flex;align-items:center;gap:10px;}
@@ -41,11 +39,7 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .card h3{margin-top:10px;font-size:18px;font-weight:600;color:#333;}
 .card p{color:#666;font-size:14px;margin-top:5px;}
 .money{margin-top:10px;color:#007BFF;font-weight:bold;font-size:16px;}
-
-/* 过渡区域 */
 .transition-section{background:linear-gradient(to bottom,#ffffff,#0A0E17);height:100px;position:relative;z-index:1;}
-
-/* 下半部分：深蓝背景 */
 .dark-section{background:#0A0E17;color:#fff;position:relative;z-index:2;margin-top:-1px;padding:60px;}
 .terminal-panel{background:rgba(26,31,46,0.9);border:1px solid rgba(0,123,255,0.3);border-radius:16px;padding:30px;margin:40px 60px;backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,123,255,0.2);}
 .terminal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,0.1);}
@@ -58,8 +52,6 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .output{color:#A0AEC0;margin-left:130px;margin-top:5px;}
 .output.success{color:#00C853;}
 .output.warning{color:#FFC107;}
-
-/* 服务卡片 */
 .services-section{padding:60px;}
 .section-header{text-align:center;margin-bottom:50px;}
 .section-title{font-size:42px;font-weight:700;margin-bottom:15px;background:linear-gradient(135deg,#007BFF,#00C6FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
@@ -74,8 +66,6 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .card-price span{font-size:14px;color:#A0AEC0;font-weight:normal;}
 .card-action{padding:8px 20px;background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.3);border-radius:8px;color:#007BFF;text-decoration:none;font-size:14px;font-weight:500;transition:0.3s;}
 .card-action:hover{background:#007BFF;color:white;}
-
-/* 联系方式 */
 .contact-info{margin:40px 0;padding:30px;background:rgba(0,123,255,0.05);border-radius:16px;border:1px solid rgba(0,123,255,0.3);text-align:center;}
 .contact-title{color:#007BFF;font-size:24px;font-weight:600;margin-bottom:20px;}
 .contact-methods{display:flex;flex-direction:column;gap:15px;max-width:400px;margin:0 auto;}
@@ -87,8 +77,6 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .contact-value{color:#fff;font-size:16px;font-weight:500;}
 .contact-link{color:#007BFF;text-decoration:none;transition:0.3s;}
 .contact-link:hover{color:#00C6FF;text-decoration:underline;}
-
-/* 响应式 */
 @media (max-width:768px){
 .nav{padding:15px 20px;flex-direction:column;gap:15px;}
 .menu{gap:20px;flex-wrap:wrap;justify-content:center;}
@@ -103,8 +91,6 @@ h1{font-size:42px;}
 </style>
 </head>
 <body>
-
-<!-- 上半部分：白色背景现代设计 -->
 <section class="hero-section">
 <nav class="nav">
 <div class="logo"><div class="logo-icon"><i class="fas fa-shield-alt"></i></div><span>链安科技</span></div>
@@ -126,11 +112,7 @@ h1{font-size:42px;}
 </div>
 </div>
 </section>
-
-<!-- 过渡区域 -->
 <div class="transition-section"></div>
-
-<!-- 下半部分：深蓝科技风格 -->
 <section class="dark-section">
 <section id="dashboard" class="terminal-panel">
 <div class="terminal-header"><div class="terminal-title"><i class="fas fa-terminal"></i><span>安全控制中心 v2.6.1</span></div></div>
@@ -146,7 +128,6 @@ h1{font-size:42px;}
 <div class="output warning">• 待审核: 12 件</div>
 </div>
 </section>
-
 <section id="services" class="services-section">
 <div class="section-header"><h2 class="section-title">专业区块链安全服务</h2><p class="section-subtitle">我们提供全方位的区块链安全解决方案</p></div>
 <div class="services-grid">
@@ -156,7 +137,6 @@ h1{font-size:42px;}
 <div class="service-card"><h3 class="card-title">法律维权服务</h3><p class="card-description">提供专业的法律支持</p><div class="card-footer"><div class="card-price">$1000+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">法律咨询</a></div></div>
 </div>
 </section>
-
 <section id="contact" class="contact-info">
 <h2 class="contact-title">📞 联系我们</h2>
 <div class="contact-methods">
@@ -165,7 +145,6 @@ h1{font-size:42px;}
 </div>
 </section>
 </section>
-
 <script>
 document.addEventListener('DOMContentLoaded',function(){
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
