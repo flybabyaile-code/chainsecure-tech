@@ -61,6 +61,9 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .service-card:hover{transform:translateY(-8px);border-color:#007BFF;box-shadow:0 10px 30px rgba(0,123,255,0.2);}
 .card-title{font-size:20px;font-weight:600;margin-bottom:12px;color:#fff;}
 .card-description{color:#A0AEC0;font-size:14px;line-height:1.6;margin-bottom:20px;}
+.card-features{margin-bottom:25px;}
+.feature-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:#A0AEC0;}
+.feature-item i{color:#007BFF;font-size:12px;}
 .card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);}
 .card-price{font-size:24px;font-weight:700;color:#007BFF;}
 .card-price span{font-size:14px;color:#A0AEC0;font-weight:normal;}
@@ -131,30 +134,41 @@ h1{font-size:42px;}
 <section id="services" class="services-section">
 <div class="section-header"><h2 class="section-title">专业区块链安全服务</h2><p class="section-subtitle">我们提供全方位的区块链安全解决方案</p></div>
 <div class="services-grid">
-<div class="service-card"><h3 class="card-title">交易所风控解除</h3><p class="card-description">专业解决各大交易所账户异常问题</p><div class="card-footer"><div class="card-price">$500+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">立即咨询</a></div></div>
-<div class="service-card"><h3 class="card-title">链上资产追回</h3><p class="card-description">专业追踪和追回被盗加密货币资产</p><div class="card-footer"><div class="card-price">15% <span>追回金额</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">案件评估</a></div></div>
-<div class="service-card"><h3 class="card-title">数据恢复服务</h3><p class="card-description">专业恢复丢失的加密货币相关数据</p><div class="card-footer"><div class="card-price">$300+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">数据评估</a></div></div>
-<div class="service-card"><h3 class="card-title">法律维权服务</h3><p class="card-description">提供专业的法律支持</p><div class="card-footer"><div class="card-price">$1000+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">法律咨询</a></div></div>
+<div class="service-card">
+<h3 class="card-title">交易所风控解除</h3>
+<p class="card-description">专业解决各大交易所账户异常问题，包括交易限制、提币限制、登录问题、KYC验证等。</p>
+<div class="card-features">
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>交易限制解除</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>提币限制解除</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>账户冻结解冻</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>KYC验证协助</span></div>
 </div>
-</section>
-<section id="contact" class="contact-info">
-<h2 class="contact-title">📞 联系我们</h2>
-<div class="contact-methods">
-<div class="contact-method"><div class="contact-icon"><i class="fab fa-telegram"></i></div><div class="contact-details"><div class="contact-label">Telegram</div><div class="contact-value"><a href="https://t.me/masanduo1" target="_blank" class="contact-link">@masanduo1</a></div></div></div>
-<div class="contact-method"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-details"><div class="contact-label">邮箱</div><div class="contact-value"><a href="mailto:flybabyaile@gmail.com" class="contact-link">flybabyaile@gmail.com</a></div></div></div>
+<div class="card-footer"><div class="card-price">$500+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">立即咨询</a></div>
 </div>
-</section>
-</section>
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click',function(e){e.preventDefault();
-const targetId=this.getAttribute('href');if(targetId==='#')return;
-const targetElement=document.querySelector(targetId);
-if(targetElement){window.scrollTo({top:targetElement.offsetTop-80,behavior:'smooth'});}});});
-document.querySelectorAll('.card-action').forEach(button=>{
-button.addEventListener('click',function(e){if(this.getAttribute('href')==='#'){e.preventDefault();window.open('https://t.me/masanduo1','_blank');}});});
-});
-</script>
-</body>
-</html>
+<div class="service-card">
+<h3 class="card-title">链上资产追回</h3>
+<p class="card-description">专业追踪和追回被盗加密货币资产，包括黑客攻击、钓鱼诈骗、私钥泄露等案件。</p>
+<div class="card-features">
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>黑客攻击资产追踪</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>钓鱼诈骗资金追回</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>私钥泄露资产保护</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>合约漏洞资金恢复</span></div>
+</div>
+<div class="card-footer"><div class="card-price">15% <span>追回金额</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">案件评估</a></div>
+</div>
+<div class="service-card">
+<h3 class="card-title">数据恢复服务</h3>
+<p class="card-description">专业恢复丢失的加密货币相关数据，包括助记词、私钥、钱包文件、交易记录等。</p>
+<div class="card-features">
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>助记词部分丢失恢复</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>私钥文件恢复</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>手机/电脑数据恢复</span></div>
+<div class="feature-item"><i class="fas fa-check-circle"></i><span>硬盘损坏数据恢复</span></div>
+</div>
+<div class="card-footer"><div class="card-price">$300+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">数据评估</a></div>
+</div>
+<div class="service-card">
+<h3 class="card-title">法律维权服务</h3>
+<p class="card-description">提供专业的法律支持，包括诈骗案件立案、债务纠纷诉讼、合规咨询等法律服务。</p>
+<div class="card-features">
+<div class="feature-item"><i class="fas fa
