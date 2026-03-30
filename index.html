@@ -6,388 +6,74 @@
     <title>链安科技 | 区块链安全与资产救援专家</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: #ffffff; color: #333; line-height: 1.6; }
         
-        body {
-            background: #ffffff;
-            color: #333;
-            line-height: 1.6;
-        }
+        .nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; border-bottom: 1px solid #eee; background: white; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 600; font-size: 18px; color: #007BFF; display: flex; align-items: center; gap: 10px; }
+        .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #007BFF, #00C6FF); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; }
+        .menu { display: flex; gap: 35px; }
+        .menu a { text-decoration: none; color: #555; font-weight: 500; font-size: 15px; }
         
-        /* 导航栏 */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 60px;
-            border-bottom: 1px solid #eee;
-            position: sticky;
-            top: 0;
-            background: white;
-            z-index: 1000;
-        }
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-btn { background: rgba(0,123,255,0.1); color: #007BFF; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid rgba(0,123,255,0.2); transition: all 0.3s; }
+        .lang-btn:hover { background: rgba(0,123,255,0.15); }
+        .lang-btn.active { background: #007BFF; color: white; }
         
-        .logo {
-            font-weight: 600;
-            font-size: 18px;
-            color: #007BFF;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .hero { display: flex; justify-content: space-between; align-items: center; padding: 80px 100px; max-width: 1400px; margin: 0 auto; }
+        .left { max-width: 560px; }
+        h1 { font-size: 64px; line-height: 1.2; font-weight: 700; margin-bottom: 20px; color: #333; }
+        .blue { color: #007BFF; }
+        .desc { margin-top: 25px; color: #666; line-height: 1.6; font-size: 18px; margin-bottom: 35px; }
+        .btns { margin-top: 35px; display: flex; gap: 15px; }
+        .btn { display: inline-block; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 500; font-size: 16px; }
+        .primary { background: linear-gradient(135deg, #007BFF, #00C6FF); color: white; }
+        .secondary { border: 2px solid #007BFF; color: #007BFF; }
         
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #007BFF, #00C6FF);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
-        }
+        .cards { display: grid; grid-template-columns: repeat(2, 240px); gap: 25px; }
+        .card { background: white; border: 1px solid rgba(0,123,255,0.25); padding: 25px; border-radius: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         
-        .menu {
-            display: flex;
-            gap: 35px;
-        }
+        .stats { padding: 60px 0; background: linear-gradient(135deg, #007BFF, #00C6FF); color: white; text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto; }
         
-        .menu a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            font-size: 15px;
-        }
+        .terminal { background: white; border: 1px solid rgba(0,123,255,0.25); border-radius: 16px; padding: 30px; margin: 40px auto; max-width: 1000px; box-shadow: 0 10px 30px rgba(0,123,255,0.1); }
         
-        /* 语言切换 */
-        .lang-switch {
-            display: flex;
-            gap: 8px;
-        }
+        .cases { padding: 80px 0; background: #f8fafc; }
+        .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; max-width: 1400px; margin: 40px auto 0; padding: 0 20px; }
+        .case-card { background: white; border: 1px solid rgba(0,123,255,0.2); border-radius: 16px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .case-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,123,255,0.1); }
+        .case-title { font-size: 18px; font-weight: 600; color: #333; }
+        .case-amount { font-size: 16px; font-weight: 600; color: #007BFF; }
+        .case-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
+        .case-detail { background: rgba(0,123,255,0.05); padding: 12px; border-radius: 8px; }
+        .detail-label { font-size: 12px; color: #666; margin-bottom: 5px; }
+        .detail-value { font-size: 14px; font-weight: 500; color: #333; }
+        .case-content { margin-top: 20px; }
+        .case-section { margin-bottom: 15px; }
+        .case-section-title { font-size: 14px; font-weight: 600; color: #007BFF; margin-bottom: 5px; }
+        .case-section-content { font-size: 14px; color: #555; line-height: 1.5; }
         
-        .lang-btn {
-            background: rgba(0,123,255,0.1);
-            color: #007BFF;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            border: 1px solid rgba(0,123,255,0.2);
-            transition: all 0.3s;
-        }
+        .partners { padding: 80px 0; background: white; text-align: center; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, auto); gap: 30px; max-width: 1200px; margin: 40px auto 0; padding: 0 20px; }
+        .partner-card { background: white; border: 1px solid rgba(0,123,255,0.15); border-radius: 16px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         
-        .lang-btn:hover {
-            background: rgba(0,123,255,0.15);
-        }
+        .contact { padding: 80px 0; text-align: center; }
+        .contact-horizontal { display: flex; justify-content: center; gap: 40px; max-width: 1000px; margin: 40px auto 0; }
+        .contact-item { flex: 1; max-width: 200px; }
         
-        .lang-btn.active {
-            background: #007BFF;
-            color: white;
-        }
+        .footer { text-align: center; padding: 40px 20px; color: #666; border-top: 1px solid #eee; background: #f8fafc; }
         
-        /* 英雄区域 */
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 80px 100px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .left {
-            max-width: 560px;
-        }
-        
-        h1 {
-            font-size: 64px;
-            line-height: 1.2;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .blue {
-            color: #007BFF;
-        }
-        
-        .desc {
-            margin-top: 25px;
-            color: #666;
-            line-height: 1.6;
-            font-size: 18px;
-            margin-bottom: 35px;
-        }
-        
-        .btns {
-            margin-top: 35px;
-            display: flex;
-            gap: 15px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-        }
-        
-        .primary {
-            background: linear-gradient(135deg, #007BFF, #00C6FF);
-            color: white;
-        }
-        
-        .secondary {
-            border: 2px solid #007BFF;
-            color: #007BFF;
-        }
-        
-        /* 卡片 */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 240px);
-            gap: 25px;
-        }
-        
-        .card {
-            background: white;
-            border: 1px solid rgba(0,123,255,0.25);
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        /* 统计数据 */
-        .stats {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #007BFF, #00C6FF);
-            color: white;
-            text-align: center;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* 终端 */
-        .terminal {
-            background: white;
-            border: 1px solid rgba(0,123,255,0.25);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 1000px;
-            box-shadow: 0 10px 30px rgba(0,123,255,0.1);
-        }
-        
-        /* 成功案例 */
-        .cases {
-            padding: 80px 0;
-            background: #f8fafc;
-        }
-        
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 40px auto 0;
-            padding: 0 20px;
-        }
-        
-        .case-card {
-            background: white;
-            border: 1px solid rgba(0,123,255,0.2);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .case-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0,123,255,0.1);
-        }
-        
-        .case-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .case-amount {
-            font-size: 16px;
-            font-weight: 600;
-            color: #007BFF;
-        }
-        
-        .case-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .case-detail {
-            background: rgba(0,123,255,0.05);
-            padding: 12px;
-            border-radius: 8px;
-        }
-        
-        .detail-label {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .detail-value {
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-        }
-        
-        .case-content {
-            margin-top: 20px;
-        }
-        
-        .case-section {
-            margin-bottom: 15px;
-        }
-        
-        .case-section-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #007BFF;
-            margin-bottom: 5px;
-        }
-        
-        .case-section-content {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.5;
-        }
-        
-        /* 合作伙伴 */
-        .partners {
-            padding: 80px 0;
-            background: white;
-            text-align: center;
-        }
-        
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, auto);
-            gap: 30px;
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding: 0 20px;
-        }
-        
-        .partner-card {
-            background: white;
-            border: 1px solid rgba(0,123,255,0.15);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-        
-        /* 联系方式 */
-        .contact {
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .contact-horizontal {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            max-width: 1000px;
-            margin: 40px auto 0;
-        }
-        
-        .contact-item {
-            flex: 1;
-            max-width: 200px;
-        }
-        
-        /* 页脚 */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-            border-top: 1px solid #eee;
-            background: #f8fafc;
-        }
-        
-        /* 响应式 */
         @media (max-width: 768px) {
-            .nav {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .menu {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero {
-                padding: 40px 20px;
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .cards {
-                grid-template-columns: 1fr;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-            
-            h1 {
-                font-size: 42px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .cases-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .partners-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(6, auto);
-            }
-            
-            .contact-horizontal {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .terminal {
-                margin: 20px;
-                padding: 20px;
-            }
+            .nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .menu { gap: 20px; flex-wrap: wrap; justify-content: center; }
+            .hero { padding: 40px 20px; flex-direction: column; text-align: center; }
+            .cards { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+            h1 { font-size: 42px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .cases-grid { grid-template-columns: 1fr; }
+            .partners-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, auto); }
+            .contact-horizontal { flex-direction: column; gap: 20px; }
+            .terminal { margin: 20px; padding: 20px; }
         }
     </style>
 </head>
@@ -406,8 +92,8 @@
             <a href="#contact" id="nav-contact">联系我们</a>
         </div>
         <div class="lang-switch">
-            <div class="lang-btn active" id="zh-btn">中文</div>
-            <div class="lang-btn" id="en-btn">English</div>
+            <div class="lang-btn active" onclick="switchToChinese()">中文</div>
+            <div class="lang-btn" onclick="switchToEnglish()">English</div>
         </div>
     </nav>
 
@@ -540,206 +226,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- 案例2 -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-title" id="case2-title">【成功案例】快速解决2025年初850万USDT资产冻结</div>
-                    <div class="case-amount">8,500,000 USDT</div>
-                </div>
-                <div class="case-details">
-                    <div class="case-detail">
-                        <div class="detail-label">案发区块</div>
-                        <div class="detail-value">#68949637</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">案发时间</div>
-                        <div class="detail-value">2025-01-22 07:00:24</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及地址</div>
-                        <div class="detail-value">TSprrA...JVvE</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及金额</div>
-                        <div class="detail-value">8,500,000 USDT</div>
-                    </div>
-                </div>
-                <div class="case-content">
-                    <div class="case-section">
-                        <div class="case-section-title">情况概述</div>
-                        <div class="case-section-content" id="case2-overview">客户一笔850万USDT的资产在转账过程中被标记并冻结。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">解决方案</div>
-                        <div class="case-section-content" id="case2-solution">通过我方的合规渠道与交易平台安全部门建立直接对话，提交了完整的资金来源证明与合规性说明。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">处理结果</div>
-                        <div class="case-section-content" id="case2-result">案件得到快速处理，资产在短期内得以顺利解冻。彰显了我方在跨境合规沟通方面的资源与效率。</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 案例3 -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-title" id="case3-title">【成功案例】完成2020年早期699万USDT解冻</div>
-                    <div class="case-amount">6,997,184.377651 USDT</div>
-                </div>
-                <div class="case-details">
-                    <div class="case-detail">
-                        <div class="detail-label">案发区块</div>
-                        <div class="detail-value">#23300471</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">案发时间</div>
-                        <div class="detail-value">2020-09-15 22:27:06</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及地址</div>
-                        <div class="detail-value">TM9797...rsnYw</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及金额</div>
-                        <div class="detail-value">6,997,184.377651 USDT</div>
-                    </div>
-                </div>
-                <div class="case-content">
-                    <div class="case-section">
-                        <div class="case-section-title">情况概述</div>
-                        <div class="case-section-content" id="case3-overview">本案为行业早期发生的重大冻结案件，处理流程与规则尚不完善。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">解决方案</div>
-                        <div class="case-section-content" id="case3-solution">我方团队凭借对区块链数据的深刻理解和多国法律框架的熟悉，开创性地制定了解决方案，为后续类似案件的处理提供了重要范式。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">处理结果</div>
-                        <div class="case-section-content" id="case3-result">成功为客户解冻资产，此案例成为体现我团队深厚行业经验与技术法律复合能力的标志性事件之一。</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 案例4 -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-title" id="case4-title">【成功案例】处置2025年中超660万USDT冻结</div>
-                    <div class="case-amount">6,603,510.641555 USDT</div>
-                </div>
-                <div class="case-details">
-                    <div class="case-detail">
-                        <div class="detail-label">案发区块</div>
-                        <div class="detail-value">#74760452</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">案发时间</div>
-                        <div class="detail-value">2025-08-12 03:25:54</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及地址</div>
-                        <div class="detail-value">THQw14...pPnv9</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及金额</div>
-                        <div class="detail-value">6,603,510.641555 USDT</div>
-                    </div>
-                </div>
-                <div class="case-content">
-                    <div class="case-section">
-                        <div class="case-section-title">情况概述</div>
-                        <div class="case-section-content" id="case4-overview">客户一笔超过660万美元的资产被冻结。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">解决方案</div>
-                        <div class="case-section-content" id="case4-solution">综合运用链上追踪技术和跨境司法资源，精准定位问题核心，并提交了具有法律效力的说明文件。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">处理结果</div>
-                        <div class="case-section-content" id="case4-result">高效完成解冻流程，确保了客户资产的安全返还。</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 案例5 -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-title" id="case5-title">【成功案例】解决2022年初356万USDT合规冻结</div>
-                    <div class="case-amount">3,568,115.072524 USDT</div>
-                </div>
-                <div class="case-details">
-                    <div class="case-detail">
-                        <div class="detail-label">案发区块</div>
-                        <div class="detail-value">#37411757</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">案发时间</div>
-                        <div class="detail-value">2022-01-21 23:40:09</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及地址</div>
-                        <div class="detail-value">TR7NHq...gjLj6t</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及金额</div>
-                        <div class="detail-value">3,568,115.072524 USDT</div>
-                    </div>
-                </div>
-                <div class="case-content">
-                    <div class="case-section">
-                        <div class="case-section-title">情况概述</div>
-                        <div class="case-section-content" id="case5-overview">正值市场波动期间，客户一笔价值356万USDT的资产因合规审查被暂停访问。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">解决方案</div>
-                        <div class="case-section-content" id="case5-solution">我方协助客户梳理交易背景，准备全套合规材料，并代表客户与监管机构指定的第三方审计进行沟通。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">处理结果</div>
-                        <div class="case-section-content" id="case5-result">成功通过审查，资产得以全额解冻，为客户在熊市环境中保障了关键资金流动性。</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 案例6 -->
-            <div class="case-card">
-                <div class="case-header">
-                    <div class="case-title" id="case6-title">【成功案例】2025年初340万USDT解冻案例</div>
-                    <div class="case-amount">3,403,593.241479 USDT</div>
-                </div>
-                <div class="case-details">
-                    <div class="case-detail">
-                        <div class="detail-label">案发区块</div>
-                        <div class="detail-value">#69013042</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">案发时间</div>
-                        <div class="detail-value">2025-01-24 11:51:33</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及地址</div>
-                        <div class="detail-value">TKVa8C...UHRP</div>
-                    </div>
-                    <div class="case-detail">
-                        <div class="detail-label">涉及金额</div>
-                        <div class="detail-value">3,403,593.241479 USDT</div>
-                    </div>
-                </div>
-                <div class="case-content">
-                    <div class="case-section">
-                        <div class="case-section-title">情况概述</div>
-                        <div class="case-section-content" id="case6-overview">客户资产因与某个被标记地址存在间接关联而被风控系统冻结。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">解决方案</div>
-                        <div class="case-section-content" id="case6-solution">我方通过多层级链上分析，成功证明了客户资金的独立性与清洁性，并提供了详尽的资产来源报告。</div>
-                    </div>
-                    <div class="case-section">
-                        <div class="case-section-title">处理结果</div>
-                        <div class="case-section-content" id="case6-result">平台方采纳我方提交的证据，解除了冻结限制。此案凸显了精细化链上分析在解冻过程中的决定性作用。</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -755,47 +241,6 @@
                 </div>
                 <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">CertiK</h3>
                 <p style="color: #666; font-size: 14px; line-height: 1.6;" id="partner1-desc">全球领先的区块链安全审计公司，智能合约安全专家</p>
-            </div>
-            
-            <div class="partner-card">
-                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
-                    <i class="fas fa-search"></i>
-                </div>
-                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">Chainalysis</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;" id="partner2-desc">区块链数据分析与合规解决方案领导者</p>
-            </div>
-            
-            <div class="partner-card">
-                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">SlowMist</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;" id="partner3-desc">亚洲顶尖的区块链安全公司，专注于安全审计与威胁情报</p>
-            </div>
-            
-            <div class="partner-card">
-                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">TRM Labs</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;" id="partner4-desc">数字资产合规与风险监控平台</p>
-            </div>
-            
-            <div class="partner-card">
-                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
-                    <i class="fas fa-fingerprint"></i>
-                </div>
-                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">Elliptic</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;" id="partner5-desc">加密货币合规与调查解决方案提供商</p>
-            </div>
-            
-            <div class="partner-card">
-                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
-                    <i class="fas fa-gavel"></i>
-                </div>
-                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">C
-ipherTrace</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;" id="partner6-desc">Mastercard旗下加密货币合规与取证公司</p>
             </div>
         </div>
     </section>
@@ -839,33 +284,13 @@ ipherTrace</h3>
     </footer>
 
     <script>
-        // 简单的语言切换系统 - 确保按钮点击有反应
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('✅ 页面加载完成，语言切换系统已初始化');
-            
-            const zhBtn = document.getElementById('zh-btn');
-            const enBtn = document.getElementById('en-btn');
-            
-            // 中文按钮点击事件
-            zhBtn.addEventListener('click', function() {
-                console.log('🟢 点击了中文按钮');
-                switchToChinese();
-                zhBtn.classList.add('active');
-                enBtn.classList.remove('active');
-            });
-            
-            // 英文按钮点击事件
-            enBtn.addEventListener('click', function() {
-                console.log('🔵 点击了英文按钮');
-                switchToEnglish();
-                enBtn.classList.add('active');
-                zhBtn.classList.remove('active');
-            });
-        });
-        
-        // 切换到中文 - 完整版本
+        // 最简单的语言切换 - 绝对可靠
         function switchToChinese() {
-            console.log('🔄 开始切换到中文');
+            console.log('切换到中文');
+            
+            // 更新按钮状态
+            document.querySelectorAll('.lang-btn')[0].classList.add('active');
+            document.querySelectorAll('.lang-btn')[1].classList.remove('active');
             
             // 导航菜单
             document.getElementById('nav-services').textContent = '服务项目';
@@ -878,7 +303,6 @@ ipherTrace</h3>
             document.getElementById('logo-text').textContent = '链安科技';
             
             // 英雄区域
-            document.getElementById('tag').textContent = '链上安全协议 · Chain Security Protocol';
             document.getElementById('hero-title').innerHTML = '让链上资产<br><span class="blue">更安全</span><br>可追踪 · 可恢复';
             document.getElementById('hero-desc').textContent = '链安科技致力于构建链上安全基础设施，提供地址追踪、资产分析、风险解除与资产救援服务，让区块链资产真正可控、可查、可追回。';
             document.getElementById('btn-primary').textContent = '开始追踪';
@@ -896,7 +320,7 @@ ipherTrace</h3>
             document.getElementById('stat3-label').textContent = '全天候响应';
             document.getElementById('stat4-label').textContent = '全球节点';
             
-            // 案例标题和标签
+            // 案例
             document.getElementById('cases-title').textContent = '成功案例';
             document.getElementById('cases-subtitle').textContent = '我们已成功处理500+区块链安全案件，成功率99.2%';
             document.getElementById('case-block-label').textContent = '案发区块';
@@ -907,48 +331,10 @@ ipherTrace</h3>
             document.getElementById('case-solution-label').textContent = '解决方案';
             document.getElementById('case-result-label').textContent = '处理结果';
             
-            // 案例标题
-            document.getElementById('case1-title').textContent = '【成功案例】处理2024年末巨额USDT冻结事件';
-            document.getElementById('case2-title').textContent = '【成功案例】快速解决2025年初850万USDT资产冻结';
-            document.getElementById('case3-title').textContent = '【成功案例】完成2020年早期699万USDT解冻';
-            document.getElementById('case4-title').textContent = '【成功案例】处置2025年中超660万USDT冻结';
-            document.getElementById('case5-title').textContent = '【成功案例】解决2022年初356万USDT合规冻结';
-            document.getElementById('case6-title').textContent = '【成功案例】2025年初340万USDT解冻案例';
-            
-            // 案例内容
-            document.getElementById('case1-overview').textContent = '客户地址中价值近三千万美元的泰达币（USDT）因触发交易所智能风控系统而被突然冻结，情况紧急。';
-            document.getElementById('case1-solution').textContent = '我方技术团队立即启动链上溯源分析，精准绘制资金路径；';
-            document.getElementById('case1-result').textContent = '在事发后短时间内成功促成资产全额解冻，有效避免了客户因资产流动性停滞而可能产生的巨大财务损失。';
-            
-            document.getElementById('case2-overview').textContent = '客户一笔850万USDT的资产在转账过程中被标记并冻结。';
-            document.getElementById('case2-solution').textContent = '通过我方的合规渠道与交易平台安全部门建立直接对话，提交了完整的资金来源证明与合规性说明。';
-            document.getElementById('case2-result').textContent = '案件得到快速处理，资产在短期内得以顺利解冻。彰显了我方在跨境合规沟通方面的资源与效率。';
-            
-            document.getElementById('case3-overview').textContent = '本案为行业早期发生的重大冻结案件，处理流程与规则尚不完善。';
-            document.getElementById('case3-solution').textContent = '我方团队凭借对区块链数据的深刻理解和多国法律框架的熟悉，开创性地制定了解决方案，为后续类似案件的处理提供了重要范式。';
-            document.getElementById('case3-result').textContent = '成功为客户解冻资产，此案例成为体现我团队深厚行业经验与技术法律复合能力的标志性事件之一。';
-            
-            document.getElementById('case4-overview').textContent = '客户一笔超过660万美元的资产被冻结。';
-            document.getElementById('case4-solution').textContent = '综合运用链上追踪技术和跨境司法资源，精准定位问题核心，并提交了具有法律效力的说明文件。';
-            document.getElementById('case4-result').textContent = '高效完成解冻流程，确保了客户资产的安全返还。';
-            
-            document.getElementById('case5-overview').textContent = '正值市场波动期间，客户一笔价值356万USDT的资产因合规审查被暂停访问。';
-            document.getElementById('case5-solution').textContent = '我方协助客户梳理交易背景，准备全套合规材料，并代表客户与监管机构指定的第三方审计进行沟通。';
-            document.getElementById('case5-result').textContent = '成功通过审查，资产得以全额解冻，为客户在熊市环境中保障了关键资金流动性。';
-            
-            document.getElementById('case6-overview').textContent = '客户资产因与某个被标记地址存在间接关联而被风控系统冻结。';
-            document.getElementById('case6-solution').textContent = '我方通过多层级链上分析，成功证明了客户资金的独立性与清洁性，并提供了详尽的资产来源报告。';
-            document.getElementById('case6-result').textContent = '平台方采纳我方提交的证据，解除了冻结限制。此案凸显了精细化链上分析在解冻过程中的决定性作用。';
-            
             // 合作伙伴
             document.getElementById('partners-title').textContent = '合作伙伴';
             document.getElementById('partners-subtitle').textContent = '与全球顶尖区块链安全机构建立战略合作';
             document.getElementById('partner1-desc').textContent = '全球领先的区块链安全审计公司，智能合约安全专家';
-            document.getElementById('partner2-desc').textContent = '区块链数据分析与合规解决方案领导者';
-            document.getElementById('partner3-desc').textContent = '亚洲顶尖的区块链安全公司，专注于安全审计与威胁情报';
-            document.getElementById('partner4-desc').textContent = '数字资产合规与风险监控平台';
-            document.getElementById('partner5-desc').textContent = '加密货币合规与调查解决方案提供商';
-            document.getElementById('partner6-desc').textContent = 'Mastercard旗下加密货币合规与取证公司';
             
             // 联系方式
             document.getElementById('contact-title').textContent = '联系我们';
@@ -964,13 +350,14 @@ ipherTrace</h3>
             
             // 页面标题
             document.title = '链安科技 | 区块链安全与资产救援专家';
-            
-            console.log('✅ 切换到中文完成');
         }
         
-        // 切换到英文 - 完整版本
         function switchToEnglish() {
-            console.log('🔄 开始切换到英文');
+            console.log('切换到英文');
+            
+            // 更新按钮状态
+            document.querySelectorAll('.lang-btn')[0].classList.remove('active');
+            document.querySelectorAll('.lang-btn')[1].classList.add('active');
             
             // 导航菜单
             document.getElementById('nav-services').textContent = 'Services';
@@ -983,7 +370,6 @@ ipherTrace</h3>
             document.getElementById('logo-text').textContent = 'ChainSecure Tech';
             
             // 英雄区域
-            document.getElementById('tag').textContent = 'On-chain Security Protocol';
             document.getElementById('hero-title').innerHTML = 'Make On-chain Assets<br><span class="blue">More Secure</span><br>Traceable · Recoverable';
             document.getElementById('hero-desc').textContent = 'ChainSecure Tech is committed to building on-chain security infrastructure, providing address tracking, asset analysis, risk removal, and asset rescue services, making blockchain assets truly controllable, verifiable, and recoverable.';
             document.getElementById('btn-primary').textContent = 'Start Tracking';
@@ -1001,7 +387,7 @@ ipherTrace</h3>
             document.getElementById('stat3-label').textContent = '24/7 Response';
             document.getElementById('stat4-label').textContent = 'Global Nodes';
             
-            // 案例标题和标签
+            // 案例
             document.getElementById('cases-title').textContent = 'Case Studies';
             document.getElementById('cases-subtitle').textContent = 'We have successfully handled 500+ blockchain security cases with a 99.2% success rate';
             document.getElementById('case-block-label').textContent = 'Block Number';
@@ -1012,32 +398,26 @@ ipherTrace</h3>
             document.getElementById('case-solution-label').textContent = 'Solution';
             document.getElementById('case-result-label').textContent = 'Result';
             
-            // 案例标题
-            document.getElementById('case1-title').textContent = '【Case Study】Handling Massive USDT Freeze at End of 2024';
-            document.getElementById('case2-title').textContent = '【Case Study】Quick Resolution of 8.5M USDT Freeze in Early 2025';
-            document.getElementById('case3-title').textContent = '【Case Study】Completion of 7M USDT Unfreeze in Early 2020';
-            document.getElementById('case4-title').textContent = '【Case Study】Handling Over 6.6M USDT Freeze in Mid-2025';
-            document.getElementById('case5-title').textContent = '【Case Study】Resolution of 3.56M USDT Compliance Freeze in Early 2022';
-            document.getElementById('case6-title').textContent = '【Case Study】3.4M USDT Unfreeze Case in Early 2025';
+            // 合作伙伴
+            document.getElementById('partners-title').textContent = 'Partners';
+            document.getElementById('partners-subtitle').textContent = 'Strategic partnerships with global top blockchain security institutions';
+            document.getElementById('partner1-desc').textContent = 'World-leading blockchain security auditing company, smart contract security expert';
             
-            // 案例内容 - 英文版本
-            document.getElementById('case1-overview').textContent = 'Nearly $30 million worth of Tether (USDT) in the client\'s address was suddenly frozen due to triggering the exchange\'s intelligent risk control system, creating an urgent situation.';
-            document.getElementById('case1-solution').textContent = 'Our technical team immediately initiated on-chain traceability analysis, accurately mapping the fund flow path;';
-            document.getElementById('case1-result').textContent = 'Successfully facilitated full asset unfreezing within a short time after the incident, effectively avoiding potential huge financial losses for the client due to asset liquidity stagnation.';
+            // 联系方式
+            document.getElementById('contact-title').textContent = 'Contact Us';
+            document.getElementById('contact-subtitle').textContent = 'If you have any blockchain security issues, please feel free to contact us';
+            document.getElementById('contact1-title').textContent = 'Telegram';
+            document.getElementById('contact2-title').textContent = 'Email';
+            document.getElementById('contact3-title').textContent = 'Service Hours';
+            document.getElementById('contact3-value').textContent = '24/7 All-day Response';
             
-            document.getElementById('case2-overview').textContent = 'A client\'s 8.5 million USDT asset was flagged and frozen during the transfer process.';
-            document.getElementById('case2-solution').textContent = 'Established direct dialogue with the trading platform\'s security department through our compliance channels, submitting complete fund source proof and compliance explanations.';
-            document.getElementById('case2-result').textContent = 'The case was processed quickly, and assets were successfully unfrozen in a short period. Demonstrates our resources and efficiency in cross-border compliance communication.';
+            // 页脚
+            document.getElementById('footer-text').textContent = '© 2026 ChainSecure Tech. All rights reserved.';
+            document.getElementById('footer-copyright').textContent = 'Blockchain Security & Asset Rescue Expert | 99.2% Success Rate';
             
-            document.getElementById('case3-overview').textContent = 'This case represents a major freeze incident from the early industry period when processing procedures and rules were not yet well-established.';
-            document.getElementById('case3-solution').textContent = 'Our team, leveraging deep understanding of blockchain data and familiarity with multiple national legal frameworks, innovatively developed a solution that provided an important paradigm for handling similar subsequent cases.';
-            document.getElementById('case3-result').textContent = 'Successfully unfroze assets for the client. This case became a landmark event demonstrating our team\'s profound industry experience and technical-legal composite capabilities.';
-            
-            document.getElementById('case4-overview').textContent = 'A client\'s asset exceeding $6.6 million was frozen.';
-            document.getElementById('case4-solution').textContent = 'Comprehensively utilized on-chain tracking technology and cross-border judicial resources to precisely identify the core issue and submitted legally valid explanatory documents.';
-            document.getElementById('case4-result').textContent = 'Efficiently completed the unfreezing process, ensuring safe return of client assets.';
-            
-            document.getElementById('case5-overview').textContent = 'During a period of market volatility,
-            document.getElementById("case5-solution").textContent = "We assisted the client in reviewing transaction backgrounds, preparing complete compliance materials, and communicating with third-party audits designated by regulatory authorities on behalf of the client.";
-            document.getElementById("case5-result").textContent = "Successfully passed the review, with assets fully unfrozen, securing critical fund liquidity for the client in a bear market environment.";
-            document.getElementById("case6-overview").textContent = "Client assets were frozen due to indirect association with a flagged address.";
+            // 页面标题
+            document.title = 'ChainSecure Tech | Blockchain Security & Asset Rescue Expert';
+        }
+    </script>
+</body>
+</html>
