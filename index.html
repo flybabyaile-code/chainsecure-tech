@@ -6,104 +6,587 @@
 <title>链安科技 | 区块链安全与资产救援专家</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root {
-  --primary-blue: #007BFF;
-  --secondary-blue: #00C6FF;
-  --success: #00C853;
-  --warning: #FFC107;
-  --danger: #FF5252;
-  --text-dark: #333;
-  --text-gray: #666;
-  --bg-light: #f8fafc;
-  --border-light: rgba(0,123,255,0.1);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter','PingFang SC','Microsoft YaHei',sans-serif;}
-body{background:#ffffff;color:#111;line-height:1.6;}
+:root {
+    --primary-blue: #007BFF;
+    --secondary-blue: #00C6FF;
+    --success: #00C853;
+    --warning: #FFC107;
+    --danger: #FF5252;
+    --text-dark: #333;
+    --text-gray: #666;
+    --bg-light: #f8fafc;
+    --border-light: rgba(0,123,255,0.1);
+}
 
-/* 导航栏优化 */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;border-bottom:1px solid #eee;position:sticky;top:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(15px);z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
-.logo{font-weight:600;font-size:18px;color:var(--primary-blue);display:flex;align-items:center;gap:10px;}
-.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--primary-blue),var(--secondary-blue));border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;}
-.menu{display:flex;gap:35px;}
-.menu a{text-decoration:none;color:#555;font-weight:500;font-size:15px;transition:0.3s;position:relative;}
-.menu a:hover{color:var(--primary-blue);}
-.menu a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--primary-blue);transition:0.3s;}
-.menu a:hover::after{width:100%;}
+body {
+    background: #ffffff;
+    color: #111;
+    line-height: 1.6;
+}
 
-/* 语言切换优化 */
-.lang-switch{display:flex;align-items:center;gap:8px;margin-left:30px;}
-.lang-btn{background:rgba(0,123,255,0.08);color:var(--primary-blue);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid rgba(0,123,255,0.2);transition:all 0.3s ease;}
-.lang-btn:hover{background:rgba(0,123,255,0.15);transform:translateY(-2px);}
-.lang-btn.active{background:var(--primary-blue);color:white;box-shadow:0 4px 12px rgba(0,123,255,0.25);}
+/* 导航栏 */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
 
-/* 英雄区域优化 */
-.hero-section{background:radial-gradient(circle at 75% 30%,rgba(0,123,255,0.12),transparent 40%),linear-gradient(135deg,#f8fafc,#ffffff);min-height:100vh;display:flex;align-items:center;}
-.hero{display:flex;justify-content:space-between;align-items:center;padding:0 100px;max-width:1400px;margin:0 auto;width:100%;}
-.left{max-width:560px;}
-.tag{display:inline-block;padding:8px 16px;border-radius:20px;background:rgba(0,123,255,0.1);color:var(--primary-blue);font-size:13px;margin-bottom:25px;font-weight:500;border:1px solid rgba(0,123,255,0.2);}
-h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;background:linear-gradient(135deg,var(--primary-blue),var(--secondary-blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.desc{margin-top:25px;color:var(--text-gray);line-height:1.6;font-size:18px;margin-bottom:35px;}
-.btns{margin-top:35px;display:flex;gap:15px;}
-.btn{display:inline-block;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:500;font-size:16px;transition:0.3s;}
-.primary{background:linear-gradient(135deg,var(--primary-blue),var(--secondary-blue));color:#fff;border:none;}
-.primary:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,123,255,0.3);}
-.secondary{border:2px solid var(--primary-blue);color:var(--primary-blue);background:transparent;}
-.secondary:hover{background:rgba(0,123,255,0.05);transform:translateY(-3px);}
+.logo {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-/* 卡片优化 */
-.cards{display:grid;grid-template-columns:repeat(2,240px);gap:25px;}
-.card{background:#fff;border:1px solid rgba(0,123,255,0.25);padding:25px;border-radius:16px;position:relative;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.05);}
-.card:hover{transform:translateY(-8px);border-color:var(--primary-blue);box-shadow:0 15px 35px rgba(0,123,255,0.15);}
-.dot{width:10px;height:10px;border-radius:50%;position:absolute;top:20px;right:20px;}
-.green{background:var(--success);box-shadow:0 0 10px rgba(0,200,83,0.3);}
-.yellow{background:var(--warning);box-shadow:0 0 10px rgba(255,193,7,0.3);}
-.card h3{margin-top:10px;font-size:18px;font-weight:600;color:var(--text-dark);}
-.card p{color:var(--text-gray);font-size:14px;margin-top:5px;}
-.money{margin-top:10px;color:var(--primary-blue);font-weight:bold;font-size:16px;}
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+}
 
-/* 终端优化 */
-.terminal-panel{background:#fff;border:1px solid rgba(0,123,255,0.25);border-radius:16px;padding:30px;margin:40px auto;max-width:1000px;box-shadow:0 10px 30px rgba(0,123,255,0.1);}
-.terminal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid rgba(0,123,255,0.2);}
-.terminal-title{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:600;color:var(--text-dark);}
-.terminal-title i{color:var(--primary-blue);}
-.terminal-content{font-family:'Monaco','Consolas','Courier New',monospace;font-size:14px;line-height:1.8;}
-.prompt{color:var(--primary-blue);font-weight:bold;min-width:120px;}
+.menu {
+    display: flex;
+    gap: 35px;
+}
 
-/* 合作伙伴优化 */
-.partners-section{padding:80px 0;background:var(--bg-light);}
-.partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:0 auto;}
-.partner-card{background:#fff;border:1px solid rgba(0,123,255,0.15);border-radius:16px;padding:35px;text-align:center;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.03);}
-.partner-card:hover{transform:translateY(-8px);border-color:var(--primary-blue);box-shadow:0 15px 35px rgba(0,123,255,0.1);}
-.partner-logo{width:90px;height:90px;background:linear-gradient(135deg,rgba(0,123,255,0.08),rgba(0,198,255,0.08));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 25px;color:var(--primary-blue);font-size:36px;border:2px solid rgba(0,123,255,0.15);}
-.partner-name{font-size:20px;font-weight:600;color:var(--text-dark);margin-bottom:12px;}
-.partner-desc{font-size:14px;color:var(--text-gray);line-height:1.6;}
+.menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.menu a:hover {
+    color: var(--primary-blue);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-blue);
+    transition: 0.3s;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* 语言切换 */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 30px;
+}
+
+.lang-btn {
+    background: rgba(0,123,255,0.08);
+    color: var(--primary-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(0,123,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: rgba(0,123,255,0.15);
+    transform: translateY(-2px);
+}
+
+.lang-btn.active {
+    background: var(--primary-blue);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,123,255,0.25);
+}
+
+/* 英雄区域 */
+.hero-section {
+    background: radial-gradient(circle at 75% 30%, rgba(0,123,255,0.12), transparent 40%), 
+                linear-gradient(135deg, #f8fafc, #ffffff);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.left {
+    max-width: 560px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0,123,255,0.1);
+    color: var(--primary-blue);
+    font-size: 13px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border: 1px solid rgba(0,123,255,0.2);
+}
+
+h1 {
+    font-size: 64px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.desc {
+    margin-top: 25px;
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.btns {
+    margin-top: 35px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.primary {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: #fff;
+    border: none;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,123,255,0.3);
+}
+
+.secondary {
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    background: transparent;
+}
+
+.secondary:hover {
+    background: rgba(0,123,255,0.05);
+    transform: translateY(-3px);
+}
+
+/* 卡片 */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 240px);
+    gap: 25px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid rgba(0,123,255,0.25);
+    padding: 25px;
+    border-radius: 16px;
+    position: relative;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 35px rgba(0,123,255,0.15);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.green {
+    background: var(--success);
+    box-shadow: 0 0 10px rgba(0,200,83,0.3);
+}
+
+.yellow {
+    background: var(--warning);
+    box-shadow: 0 0 10px rgba(255,193,7,0.3);
+}
+
+.card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.card p {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.money {
+    margin-top: 10px;
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 16px;
+}
 
 /* 统计数据 */
-.stats-section{padding:60px 0;background:linear-gradient(135deg,var(--primary-blue),var(--secondary-blue));color:white;}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1200px;margin:0 auto;}
-.stat-card{text-align:center;}
-.stat-number{font-size:52px;font-weight:700;margin-bottom:10px;}
-.stat-label{font-size:16px;opacity:0.9;}
-
-/* 响应式优化 */
-@media (max-width:1200px){
-.hero{padding:0 60px;}
-.partners-grid{grid-template-columns:repeat(2,1fr);}
+.stats-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
 }
 
-@media (max-width:768px){
-.nav{padding:15px 20px;flex-direction:column;gap:15px;}
-.menu{gap:20px;flex-wrap:wrap;justify-content:center;}
-.hero{padding:40px 20px;flex-direction:column;text-align:center;}
-.left{max-width:100%;margin-bottom:60px;}
-.cards{grid-template-columns:1fr;max-width:300px;margin:0 auto;}
-h1{font-size:42px;}
-.terminal-panel{margin:20px;padding:20px;}
-.partners-section{padding:40px 20px;}
-.partners-grid{grid-template-columns:1fr;}
-.stats-grid{grid-template-columns:repeat(2,1fr);gap:30px;}
-.stat-number{font-size:36px;}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* 终端 */
+.terminal-panel {
+    background: #fff;
+    border: 1px solid rgba(0,123,255,0.25);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 1000px;
+    box-shadow: 0 10px 30px rgba(0,123,255,0.1);
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0,123,255,0.2);
+}
+
+.terminal-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.terminal-title i {
+    color: var(--primary-blue);
+}
+
+.terminal-content {
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.prompt {
+    color: var(--primary-blue);
+    font-weight: bold;
+    min-width: 120px;
+}
+
+/* 合作伙伴 */
+.partners-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.partner-card {
+    background: #fff;
+    border: 1px solid rgba(0,123,255,0.15);
+    border-radius: 16px;
+    padding: 35px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.partner-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 35px rgba(0,123,255,0.1);
+}
+
+.partner-logo {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, rgba(0,123,255,0.08), rgba(0,198,255,0.08));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    color: var(--primary-blue);
+    font-size: 36px;
+    border: 2px solid rgba(0,123,255,0.15);
+}
+
+.partner-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.partner-desc {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* 联系方式 */
+.contact-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: 40px auto 0;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    transition: 0.3s;
+    border: 1px solid rgba(0,123,255,0.1);
+    text-align: left;
+}
+
+.contact-method:hover {
+    background: rgba(0,123,255,0.1);
+    transform: translateX(5px);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(0,123,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-blue);
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-label {
+    color: var(--text-gray);
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.contact-value {
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.contact-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    color: var(--secondary-blue);
+    text-decoration: underline;
+}
+
+/* 页脚 */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-gray);
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    margin-top: 40px;
+    background: var(--bg-light);
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer .copyright {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .hero {
+        padding: 0 60px;
+    }
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .menu {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero {
+        padding: 40px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .left {
+        max-width: 100%;
+        margin-bottom: 60px;
+    }
+    .cards {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    h1 {
+        font-size: 42px;
+    }
+    .terminal-panel {
+        margin: 20px;
+        padding: 20px;
+    }
+    .partners-section {
+        padding: 40px 20px;
+    }
+    .partners-grid {
+        grid-template-columns: 1fr;
+    }
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .stat-number {
+        font-size: 36px;
+    }
+    .contact-section {
+        padding: 40px 20px;
+    }
 }
 </style>
 </head>
@@ -163,35 +646,35 @@ h1{font-size:42px;}
 </div>
 </section>
 
-<section id="dashboard" style="padding:60px 0;">
+<section id="dashboard" style="padding: 60px 0;">
 <div class="terminal-panel">
 <div class="terminal-header">
 <div class="terminal-title"><i class="fas fa-terminal"></i><span>Security Control Center v2.6.1</span></div>
 </div>
 <div class="terminal-content">
-<div style="margin-bottom:10px;display:flex;align-items:flex-start;gap:10px;">
+<div style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px;">
 <div class="prompt">root@chainsecure:~$</div>
 <div>system status --full</div>
 </div>
-<div style="color:#00C853;margin-left:130px;margin-top:5px;">✓ System Status: Online (All services running normally)</div>
-<div style="color:#00C853;margin-left:130px;">✓ Security Monitoring: Enabled (Real-time threat detection)</div>
-<div style="color:#00C853;margin-left:130px;">✓ Node Network: Stable (12 global nodes)</div>
-<div style="margin:20px 0 10px;display:flex;align-items:flex-start;gap:10px;">
+<div style="color: #00C853; margin-left: 130px; margin-top: 5px;">✓ System Status: Online (All services running normally)</div>
+<div style="color: #00C853; margin-left: 130px;">✓ Security Monitoring: Enabled (Real-time threat detection)</div>
+<div style="color: #00C853; margin-left: 130px;">✓ Node Network: Stable (12 global nodes)</div>
+<div style="margin: 20px 0 10px; display: flex; align-items: flex-start; gap: 10px;">
 <div class="prompt">root@chainsecure:~$</div>
 <div>case stats --today</div>
 </div>
-<div style="margin-left:130px;">📊 Today's Case Statistics:</div>
-<div style="color:#9C27B0;margin-left:130px;">• Processing: 24 cases</div>
-<div style="color:#00C853;margin-left:130px;">• Resolved: 8 cases</div>
-<div style="color:#FFC107;margin-left:130px;">• Pending Review: 12 cases</div>
+<div style="margin-left: 130px;">📊 Today's Case Statistics:</div>
+<div style="color: #9C27B0; margin-left: 130px;">• Processing: 24 cases</div>
+<div style="color: #00C853; margin-left: 130px;">• Resolved: 8 cases</div>
+<div style="color: #FFC107; margin-left: 130px;">• Pending Review: 12 cases</div>
 </div>
 </div>
 </section>
 
 <section id="partners" class="partners-section">
-<div style="text-align:center;margin-bottom:50px;">
-<h2 style="font-size:42px;font-weight:700;margin-bottom:15px;background:linear-gradient(135deg,#007BFF,#00C6FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">合作伙伴</h2>
-<p style="font-size:16px;color:#666;max-width:600px;margin:0 auto;">与全球顶尖区块链安全机构建立战略合作</p>
+<div class="section-header">
+<h2 class="section-title">合作伙伴</h2>
+<p class="section-subtitle">与全球顶尖区块链安全机构建立战略合作</p>
 </div>
 <div class="partners-grid">
 <div class="partner-card">
@@ -227,9 +710,76 @@ h1{font-size:42px;}
 </div>
 </section>
 
-<section id="contact" style="padding:60px 0;text-align:center;">
-<div style="max-width:600px;margin:0 auto;">
-<h2 style="font-size:36px;font-weight:700;margin-bottom:20px;color:#007BFF;">联系我们</h2>
-<p style="color:#666;margin-bottom:40px;">如有任何区块链安全问题，请随时联系我们</p>
-<div style="display:flex;flex-direction:column;gap:20px;max-width:400px;margin:0 auto;">
-<div style="display:flex;align-items:center;gap:15px;padding:20px;
+<section id="contact" class="contact-section">
+<div class="section-header">
+<h2 class="section-title">联系我们</h2>
+<p class="section-subtitle">如有任何区块链安全问题，请随时联系我们</p>
+</div>
+<div class="contact-methods">
+<div class="contact-method">
+<div class="contact-icon"><i class="fas fa-paper-plane"></i></div>
+<div class="contact-details">
+<div class="contact-label">Telegram</div>
+<div class="contact-value"><a href="https://t.me/masanduo1" target="_blank" class="contact-link">@masanduo1</a></div>
+</div>
+</div>
+<div class="contact-method">
+<div class="contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="contact-details">
+<div class="contact-label">邮箱</div>
+<div class="contact-value"><a href="mailto:flybabyaile@gmail.com" class="contact-link">flybabyaile@gmail.com</a></div>
+</div>
+</div>
+<div class="contact-method">
+<div class="contact-icon"><i class="fas fa-clock"></i></div>
+<div class="contact-details">
+<div class="contact-label">服务时间</div>
+<div class="contact-value">24/7 全天候响应</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<p>© 2026 链安科技 ChainSecure Tech. 保留所有权利。</p>
+<p class="copyright">区块链安全与资产救援专家 | 成功率99.2%</p>
+</footer>
+
+<script>
+// 语言切换功能
+document.addEventListener('DOMContentLoaded', function() {
+    const zhBtn = document.querySelector('.lang-btn:nth-child(1)');
+    const enBtn = document.querySelector('.lang-btn:nth-child(2)');
+    
+    zhBtn.addEventListener('click', function() {
+        zhBtn.classList.add('active');
+        enBtn.classList.remove('active');
+        // 这里可以添加中文内容切换逻辑
+    });
+
+    enBtn.addEventListener('click', function() {
+        enBtn.classList.add('active');
+        zhBtn.classList.remove('active');
+        // 这里可以添加英文内容切换逻辑
+    });
+
+    // 导航菜单激活状态
+    const navLinks = document.querySelectorAll('.menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            navLinks.forEach(l => l.style.color = '#555');
+            this.style.color = '#007BFF';
+        });
+    });
+
+    // 终端命令闪烁效果
+    const prompts = document.querySelectorAll('.prompt');
+    setInterval(() => {
+        prompts.forEach(prompt => {
+            prompt.style.opacity = prompt.style.opacity === '0.7' ? '1' : '0.7';
+        });
+    }, 1000);
+});
+</script>
+</body>
+</html>
