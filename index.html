@@ -1015,13 +1015,13 @@
         <div class="partners-grid">
             <!-- 第一行 -->
             <div class="partner-card">
-                <div class="partner-logo"><i class="fas fa-shield-check"></i></div>
+                <div class="partner-logo"><i class="fas fa-shield-alt" style="font-size: 32px;"></i></div>
                 <div class="partner-name">CertiK</div>
                 <div class="partner-desc">全球领先的区块链安全审计公司，智能合约安全专家</div>
             </div>
             
             <div class="partner-card">
-                <div class="partner-logo"><i class="fas fa-search-dollar"></i></div>
+                <div class="partner-logo"><i class="fas fa-search"></i></div>
                 <div class="partner-name">Chainalysis</div>
                 <div class="partner-desc">区块链数据分析与合规解决方案领导者</div>
             </div>
@@ -1227,6 +1227,26 @@
             document.querySelector('.footer p').textContent = '© 2026 ChainSecure Tech. All rights reserved.';
             document.querySelector('.copyright').textContent = 'Blockchain Security & Asset Rescue Expert | 99.2% Success Rate';
         }
+        // 确保CertiK图标显示
+        document.addEventListener("DOMContentLoaded", function() {
+            // 检查CertiK图标是否存在
+            const certikIcon = document.querySelector(".partner-logo i");
+            if (certikIcon) {
+                // 如果图标不显示，使用备用方案
+                setTimeout(() => {
+                    const style = window.getComputedStyle(certikIcon);
+                    if (style.display === "none" || style.opacity === "0" || style.fontSize === "0px") {
+                        console.log("CertiK图标显示异常，使用备用方案");
+                        // 创建备用SVG图标
+                        const svg = `<svg width="32" height="32" viewBox="0 0 24 24" fill="#007BFF">
+                            <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/>
+                            <circle cx="12" cy="12" r="5" fill="white"/>
+                        </svg>`;
+                        certikIcon.parentElement.innerHTML = svg + certikIcon.parentElement.innerHTML;
+                    }
+                }, 1000);
+            }
+        });
     </script>
 </body>
 </html>
