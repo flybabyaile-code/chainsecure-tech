@@ -1,804 +1,519 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>链安科技 | 区块链安全与资产救援专家</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-}
-
-:root {
-    --primary-blue: #007BFF;
-    --secondary-blue: #00C6FF;
-    --success: #00C853;
-    --warning: #FFC107;
-    --danger: #FF5252;
-    --text-dark: #333;
-    --text-gray: #666;
-    --bg-light: #f8fafc;
-    --border-light: rgba(0,123,255,0.1);
-}
-
-body {
-    background: #ffffff;
-    color: #111;
-    line-height: 1.6;
-}
-
-/* 导航栏 */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    border-bottom: 1px solid #eee;
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(15px);
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo {
-    font-weight: 600;
-    font-size: 18px;
-    color: var(--primary-blue);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-icon {
-    width: 32px;
-    height: 32px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 16px;
-}
-
-.menu {
-    display: flex;
-    gap: 35px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #555;
-    font-weight: 500;
-    font-size: 15px;
-    transition: 0.3s;
-    position: relative;
-}
-
-.menu a:hover {
-    color: var(--primary-blue);
-}
-
-.menu a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-blue);
-    transition: 0.3s;
-}
-
-.menu a:hover::after {
-    width: 100%;
-}
-
-/* 语言切换 */
-.lang-switch {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 30px;
-}
-
-.lang-btn {
-    background: rgba(0,123,255,0.08);
-    color: var(--primary-blue);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1px solid rgba(0,123,255,0.2);
-    transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-    background: rgba(0,123,255,0.15);
-    transform: translateY(-2px);
-}
-
-.lang-btn.active {
-    background: var(--primary-blue);
-    color: white;
-    box-shadow: 0 4px 12px rgba(0,123,255,0.25);
-}
-
-/* 英雄区域 */
-.hero-section {
-    background: radial-gradient(circle at 75% 30%, rgba(0,123,255,0.12), transparent 40%), 
-                linear-gradient(135deg, #f8fafc, #ffffff);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 100px;
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.left {
-    max-width: 560px;
-}
-
-.tag {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: rgba(0,123,255,0.1);
-    color: var(--primary-blue);
-    font-size: 13px;
-    margin-bottom: 25px;
-    font-weight: 500;
-    border: 1px solid rgba(0,123,255,0.2);
-}
-
-h1 {
-    font-size: 64px;
-    line-height: 1.2;
-    font-weight: 700;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.desc {
-    margin-top: 25px;
-    color: var(--text-gray);
-    line-height: 1.6;
-    font-size: 18px;
-    margin-bottom: 35px;
-}
-
-.btns {
-    margin-top: 35px;
-    display: flex;
-    gap: 15px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 14px 28px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.primary {
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    color: #fff;
-    border: none;
-}
-
-.primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,123,255,0.3);
-}
-
-.secondary {
-    border: 2px solid var(--primary-blue);
-    color: var(--primary-blue);
-    background: transparent;
-}
-
-.secondary:hover {
-    background: rgba(0,123,255,0.05);
-    transform: translateY(-3px);
-}
-
-/* 卡片 */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(2, 240px);
-    gap: 25px;
-}
-
-.card {
-    background: #fff;
-    border: 1px solid rgba(0,123,255,0.25);
-    padding: 25px;
-    border-radius: 16px;
-    position: relative;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-blue);
-    box-shadow: 0 15px 35px rgba(0,123,255,0.15);
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.green {
-    background: var(--success);
-    box-shadow: 0 0 10px rgba(0,200,83,0.3);
-}
-
-.yellow {
-    background: var(--warning);
-    box-shadow: 0 0 10px rgba(255,193,7,0.3);
-}
-
-.card h3 {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.card p {
-    color: var(--text-gray);
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-.money {
-    margin-top: 10px;
-    color: var(--primary-blue);
-    font-weight: bold;
-    font-size: 16px;
-}
-
-/* 统计数据 */
-.stats-section {
-    padding: 60px 0;
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.stat-card {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 52px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.stat-label {
-    font-size: 16px;
-    opacity: 0.9;
-}
-
-/* 终端 */
-.terminal-panel {
-    background: #fff;
-    border: 1px solid rgba(0,123,255,0.25);
-    border-radius: 16px;
-    padding: 30px;
-    margin: 40px auto;
-    max-width: 1000px;
-    box-shadow: 0 10px 30px rgba(0,123,255,0.1);
-}
-
-.terminal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(0,123,255,0.2);
-}
-
-.terminal-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.terminal-title i {
-    color: var(--primary-blue);
-}
-
-.terminal-content {
-    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.prompt {
-    color: var(--primary-blue);
-    font-weight: bold;
-    min-width: 120px;
-}
-
-/* 合作伙伴 - 优化为两行显示 */
-.partners-section {
-    padding: 80px 0;
-    background: var(--bg-light);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-title {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.section-subtitle {
-    font-size: 16px;
-    color: var(--text-gray);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* 合作伙伴网格 - 两行三列 */
-.partners-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.partner-card {
-    background: #fff;
-    border: 1px solid rgba(0,123,255,0.15);
-    border-radius: 16px;
-    padding: 30px 25px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 220px;
-}
-
-.partner-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-blue);
-    box-shadow: 0 15px 35px rgba(0,123,255,0.1);
-}
-
-.partner-logo {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, rgba(0,123,255,0.08), rgba(0,198,255,0.08));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    color: var(--primary-blue);
-    font-size: 32px;
-    border: 2px solid rgba(0,123,255,0.15);
-}
-
-.partner-name {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 12px;
-}
-
-.partner-desc {
-    font-size: 14px;
-    color: var(--text-gray);
-    line-height: 1.6;
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-/* 联系方式 */
-.contact-section {
-    padding: 80px 0;
-    text-align: center;
-}
-
-.contact-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 400px;
-    margin: 40px auto 0;
-}
-
-.contact-method {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 12px;
-    transition: 0.3s;
-    border: 1px solid rgba(0,123,255,0.1);
-    text-align: left;
-}
-
-.contact-method:hover {
-    background: rgba(0,123,255,0.1);
-    transform: translateX(5px);
-}
-
-.contact-icon {
-    width: 50px;
-    height: 50px;
-    background: rgba(0,123,255,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-blue);
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.contact-details {
-    flex: 1;
-}
-
-.contact-label {
-    color: var(--text-gray);
-    font-size: 12px;
-    margin-bottom: 2px;
-}
-
-.contact-value {
-    color: var(--text-dark);
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.contact-link {
-    color: var(--primary-blue);
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.contact-link:hover {
-    color: var(--secondary-blue);
-    text-decoration: underline;
-}
-
-/* 页脚 */
-.footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-gray);
-    font-size: 14px;
-    border-top: 1px solid #eee;
-    margin-top: 40px;
-    background: var(--bg-light);
-}
-
-.footer p {
-    margin-bottom: 10px;
-}
-
-.footer .copyright {
-    font-size: 12px;
-    color: #999;
-    margin-top: 10px;
-}
-
-/* 响应式设计 */
-@media (max-width: 1200px) {
-    .hero {
-        padding: 0 60px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .partners-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, auto);
-    }
-}
-
-@media (max-width: 768px) {
-    .nav {
-        padding: 15px 20px;
-        flex-direction: column;
-        gap: 15px;
-    }
-    .menu {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .hero {
-        padding: 40px 20px;
-        flex-direction: column;
-        text-align: center;
-    }
-    .left {
-        max-width: 100%;
-        margin-bottom: 60px;
-    }
-    .cards {
-        grid-template-columns: 1fr;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    h1 {
-        font-size: 42px;
-    }
-    .terminal-panel {
-        margin: 20px;
-        padding: 20px;
-    }
-    .partners-section {
-        padding: 40px 20px;
-    }
-    .partners-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, auto);
-        gap: 20px;
-    }
-    .partner-card {
-        min-height: 200px;
-        padding: 25px 20px;
-    }
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    .stat-number {
-        font-size: 36px;
-    }
-    .contact-section {
-        padding: 40px 20px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链安科技 | 区块链安全与资产救援专家</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏 */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-weight: 600;
+            font-size: 18px;
+            color: #007BFF;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #007BFF, #00C6FF);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 35px;
+        }
+        
+        .menu a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .menu a:hover {
+            color: #007BFF;
+        }
+        
+        /* 语言切换 */
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            background: rgba(0,123,255,0.1);
+            color: #007BFF;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid rgba(0,123,255,0.2);
+        }
+        
+        .lang-btn.active {
+            background: #007BFF;
+            color: white;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .left {
+            max-width: 560px;
+        }
+        
+        h1 {
+            font-size: 64px;
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .blue {
+            color: #007BFF;
+        }
+        
+        .desc {
+            margin-top: 25px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+        
+        .btns {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .primary {
+            background: linear-gradient(135deg, #007BFF, #00C6FF);
+            color: white;
+        }
+        
+        .secondary {
+            border: 2px solid #007BFF;
+            color: #007BFF;
+        }
+        
+        /* 卡片 */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 240px);
+            gap: 25px;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid rgba(0,123,255,0.25);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* 统计数据 */
+        .stats {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #007BFF, #00C6FF);
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 终端 */
+        .terminal {
+            background: white;
+            border: 1px solid rgba(0,123,255,0.25);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0,123,255,0.1);
+        }
+        
+        /* 合作伙伴 - 两行三列 */
+        .partners {
+            padding: 80px 0;
+            background: #f8fafc;
+            text-align: center;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+        
+        .partner-card {
+            background: white;
+            border: 1px solid rgba(0,123,255,0.15);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        
+        /* 联系方式 */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 40px auto 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(0,123,255,0.1);
+            text-align: left;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid #eee;
+            background: #f8fafc;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .menu {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            h1 {
+                font-size: 42px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .partners-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, auto);
+            }
+            
+            .terminal {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<section class="hero-section">
-<nav class="nav">
-<div class="logo"><div class="logo-icon"><i class="fas fa-shield-alt"></i></div><span>链安科技</span></div>
-<div class="menu">
-<a href="#services">服务项目</a>
-<a href="#dashboard">系统状态</a>
-<a href="#cases">成功案例</a>
-<a href="#partners">合作伙伴</a>
-<a href="#contact">联系我们</a>
-</div>
-<div class="lang-switch">
-<div class="lang-btn active">中文</div>
-<div class="lang-btn">English</div>
-</div>
-</nav>
-<div class="hero">
-<div class="left">
-<div class="tag">链上安全协议 · Chain Security Protocol</div>
-<h1>让链上资产<br>更安全 · 可追踪 · 可恢复</h1>
-<p class="desc">链安科技致力于构建链上安全基础设施，提供地址追踪、资产分析、风险解除与资产救援服务，让区块链资产真正可控、可查、可追回。</p>
-<div class="btns">
-<a href="#services" class="btn primary">开始追踪</a>
-<a href="#contact" class="btn secondary">联系我们</a>
-</div>
-</div>
-<div class="cards">
-<div class="card"><div class="dot green"></div><h3>Trace Engine</h3><p>链上追踪</p><div class="money">Active</div></div>
-<div class="card"><div class="dot green"></div><div><h3>Risk Control</h3><p>风控解除</p><div class="money">Running</div></div>
-<div class="card"><div class="dot yellow"></div><h3>Recovery</h3><p>资产救援</p><div class="money">Processing</div></div>
-<div class="card"><div class="dot green"></div><h3>Data Scan</h3><p>链上分析</p><div class="money">Online</div></div>
-</div>
-</div>
-</section>
+    <!-- 导航栏 -->
+    <nav class="nav">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+            <span>链安科技</span>
+        </div>
+        <div class="menu">
+            <a href="#services">服务项目</a>
+            <a href="#dashboard">系统状态</a>
+            <a href="#cases">成功案例</a>
+            <a href="#partners">合作伙伴</a>
+            <a href="#contact">联系我们</a>
+        </div>
+        <div class="lang-switch">
+            <div class="lang-btn active">中文</div>
+            <div class="lang-btn">English</div>
+        </div>
+    </nav>
 
-<section class="stats-section">
-<div class="stats-grid">
-<div class="stat-card">
-<div class="stat-number">99.2%</div>
-<div class="stat-label">成功率</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">500+</div>
-<div class="stat-label">成功案例</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">24/7</div>
-<div class="stat-label">全天候响应</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">12</div>
-<div class="stat-label">全球节点</div>
-</div>
-</div>
-</section>
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="left">
+            <div style="padding: 8px 16px; border-radius: 20px; background: rgba(0,123,255,0.1); color: #007BFF; font-size: 13px; margin-bottom: 25px; display: inline-block;">
+                链上安全协议 · Chain Security Protocol
+            </div>
+            <h1>让链上资产<br><span class="blue">更安全</span><br>可追踪 · 可恢复</h1>
+            <p class="desc">链安科技致力于构建链上安全基础设施，提供地址追踪、资产分析、风险解除与资产救援服务，让区块链资产真正可控、可查、可追回。</p>
+            <div class="btns">
+                <a href="#services" class="btn primary">开始追踪</a>
+                <a href="#contact" class="btn secondary">联系我们</a>
+            </div>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <h3>Trace Engine</h3>
+                <p>链上追踪</p>
+                <div style="margin-top: 10px; color: #007BFF; font-weight: bold;">Active</div>
+            </div>
+            <div class="card">
+                <h3>Risk Control</h3>
+                <p>风控解除</p>
+                <div style="margin-top: 10px; color: #007BFF; font-weight: bold;">Running</div>
+            </div>
+            <div class="card">
+                <h3>Recovery</h3>
+                <p>资产救援</p>
+                <div style="margin-top: 10px; color: #007BFF; font-weight: bold;">Processing</div>
+            </div>
+            <div class="card">
+                <h3>Data Scan</h3>
+                <p>链上分析</p>
+                <div style="margin-top: 10px; color: #007BFF; font-weight: bold;">Online</div>
+            </div>
+        </div>
+    </section>
 
-<section id="dashboard" style="padding: 60px 0;">
-<div class="terminal-panel">
-<div class="terminal-header">
-<div class="terminal-title"><i class="fas fa-terminal"></i><span>Security Control Center v2.6.1</span></div>
-</div>
-<div class="terminal-content">
-<div style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px;">
-<div class="prompt">root@chainsecure:~$</div>
-<div>system status --full</div>
-</div>
-<div style="color: #00C853; margin-left: 130px; margin-top: 5px;">✓ System Status: Online (All services running normally)</div>
-<div style="color: #00C853; margin-left: 130px;">✓ Security Monitoring: Enabled (Real-time threat detection)</div>
-<div style="color: #00C853; margin-left: 130px;">✓ Node Network: Stable (12 global nodes)</div>
-<div style="margin: 20px 0 10px; display: flex; align-items: flex-start; gap: 10px;">
-<div class="prompt">root@chainsecure:~$</div>
-<div>case stats --today</div>
-</div>
-<div style="margin-left: 130px;">📊 Today's Case Statistics:</div>
-<div style="color: #9C27B0; margin-left: 130px;">• Processing: 24 cases</div>
-<div style="color: #00C853; margin-left: 130px;">• Resolved: 8 cases</div>
-<div style="color: #FFC107; margin-left: 130px;">• Pending Review: 12 cases</div>
-</div>
-</div>
-</section>
+    <!-- 统计数据 -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div>
+                <div style="font-size: 52px; font-weight: 700;">99.2%</div>
+                <div>成功率</div>
+            </div>
+            <div>
+                <div style="font-size: 52px; font-weight: 700;">500+</div>
+                <div>成功案例</div>
+            </div>
+            <div>
+                <div style="font-size: 52px; font-weight: 700;">24/7</div>
+                <div>全天候响应</div>
+            </div>
+            <div>
+                <div style="font-size: 52px; font-weight: 700;">12</div>
+                <div>全球节点</div>
+            </div>
+        </div>
+    </section>
 
-<section id="partners" class="partners-section">
-<div class="section-header">
-<h2 class="section-title">合作伙伴</h2>
-<p class="section-subtitle">与全球顶尖区块链安全机构建立战略合作</p>
-</div>
-<div class="partners-grid">
-<div class="partner-card">
-<div class="partner-logo"><i class="fas fa-shield-check"></i></div>
-<div class="partner-name">CertiK</div>
-<div class="partner-desc">全球领先的区块链安全审计公司，智能合约安全专家</div>
-</div>
-<div class="partner-card">
-<div class="partner-logo"><i class="fas fa-search-dollar"></i></div>
-<div class="partner-name">Chainalysis</div>
-<div class="partner-desc">区块链数据分析与合规解决方案领导者</div>
-</div>
-<div class="partner-card">
-<div class="partner-logo"><i class="fas fa-lock"></i></div>
-<div class="partner-name">SlowMist</div>
-<div class="partner-desc">亚洲顶尖的区块链安全公司，专注于安全审计与威胁情报</div>
-</div>
-<div class="partner-card">
-<div class="partner-logo"><i class="fas fa-balance-scale"></i></div>
-<div class="partner-name">TRM Labs</div>
-<div class="partner-desc">数字资产合规与风险监控平台</div>
-</div>
-<div class="partner-card">
-<div class="partner-logo"><i class="fas fa-fingerprint"></i></div>
-<div class="partner-name">Elliptic</div>
-<div class="partner-desc">加密货币合规与调查解决方案提供商</div>
-</div>
-<div class="partner-card">
-<div class="partner-logo"><i class="fas fa-gavel"></i></div>
-<div class="partner-name">CipherTrace</div>
-<div class="partner-desc">Mastercard旗下加密货币合规与取证公司</div>
-</div>
-</div>
-</section>
+    <!-- 终端 -->
+    <section id="dashboard" style="padding: 60px 20px;">
+        <div class="terminal">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,123,255,0.2);">
+                <i class="fas fa-terminal" style="color: #007BFF;"></i>
+                <span style="font-size: 20px; font-weight: 600;">Security Control Center v2.6.1</span>
+            </div>
+            <div style="font-family: 'Monaco', monospace; font-size: 14px;">
+                <div style="margin-bottom: 10px;">
+                    <span style="color: #007BFF; font-weight: bold;">root@chainsecure:~$</span>
+                    <span> system status --full</span>
+                </div>
+                <div style="color: #00C853; margin-left: 130px;">✓ System Status: Online (All services running normally)</div>
+                <div style="color: #00C853; margin-left: 130px;">✓ Security Monitoring: Enabled (Real-time threat detection)</div>
+                <div style="color: #00C853; margin-left: 130px;">✓ Node Network: Stable (12 global nodes)</div>
+                <div style="margin: 20px 0 10px;">
+                    <span style="color: #007BFF; font-weight: bold;">root@chainsecure:~$</span>
+                    <span> case stats --today</span>
+                </div>
+                <div style="margin-left: 130px;">📊 Today's Case Statistics:</div>
+                <div style="color: #9C27B0; margin-left: 130px;">• Processing: 24 cases</div>
+                <div style="color: #00C853; margin-left: 130px;">• Resolved: 8 cases</div>
+                <div style="color: #FFC107; margin-left: 130px;">• Pending Review: 12 cases</div>
+            </div>
+        </div>
+    </section>
 
-<section id="contact" class="contact-section">
-<div class="section-header">
-<h2 class="section-title">联系我们</h2>
-<p class="section-subtitle">如有任何区块链安全问题，请随时联系我们</p>
-</div>
-<div class="contact-methods">
-<div class="contact-method">
-<div class="contact-icon"><i class="fas fa-paper-plane"></i></div>
-<div class="contact-details">
-<div class="contact-label">Telegram</div>
-<div class="contact-value"><a href="https://t.me/masanduo1" target="_blank" class="contact-link">@masanduo1</a></div>
-</div>
-</div>
-<div class="contact-method">
-<div class="contact-icon"><i class="fas fa-envelope"></i></div>
-<div class="contact-details">
-<div class="contact-label">邮箱</div>
-<div class="contact-value"><a href="mailto:flybabyaile@gmail.com" class="contact-link">flybabyaile@gmail.com</a></div>
-</div>
-</div>
-<div class="contact-method">
-<div class="contact-icon"><i class="fas fa-clock"></i></div>
-<div class="contact-details">
-<div class="contact-label">服务时间</div>
-<div class="contact-value">24/7 全天候响应</div>
-</div>
-</div>
-</div>
-</section>
+    <!-- 合作伙伴 - 两行三列 -->
+    <section id="partners" class="partners">
+        <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 15px; background: linear-gradient(135deg, #007BFF, #00C6FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            合作伙伴
+        </h2>
+        <p style="color: #666; max-width: 600px; margin: 0 auto 50px;">与全球顶尖区块链安全机构建立战略合作</p>
+        
+        <div class="partners-grid">
+            <!-- 第一行 -->
+            <div class="partner-card">
+                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
+                    <i class="fas fa-shield-check"></i>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">CertiK</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">全球领先的区块链安全审计公司，智能合约安全专家</p>
+            </div>
+            
+            <div class="partner-card">
+                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
+                    <i class="fas fa-search-dollar"></i>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">Chainalysis</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">区块链数据分析与合规解决方案领导者</p>
+            </div>
+            
+            <div class="partner-card">
+                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">SlowMist</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">亚洲顶尖的区块链安全公司，专注于安全审计与威胁情报</p>
+            </div>
+            
+            <!-- 第二行 -->
+            <div class="partner-card">
+                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">TRM Labs</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">数字资产合规与风险监控平台</p>
+            </div>
+            
+            <div class="partner-card">
+                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
+                    <i class="fas fa-fingerprint"></i>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">Elliptic</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">加密货币合规与调查解决方案提供商</p>
+            </div>
+            
+            <div class="partner-card">
+                <div style="width: 80px; height: 80px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #007BFF; font-size: 32px;">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">CipherTrace</h3>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">Mastercard旗下加密货币合规与取证公司</p>
+            </div>
+        </div>
+    </section>
 
-<footer class="footer">
-<p>© 2026 链安科技 ChainSecure Tech. 保留所有权利。</p>
-<p class="copyright">区块链安全与资产救援专家 | 成功率99.2%</p>
-</footer>
+    <!-- 联系方式 -->
+    <section id="contact" class="contact">
+        <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 20px; color: #007BFF;">联系我们</h2>
+        <p style="color: #666; margin-bottom: 40px;">如有任何区块链安全问题，请随时联系我们</p>
+        
+        <div class="contact-methods">
+            <div class="contact-item">
+                <div style="width: 50px; height: 50px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #007BFF; font-size: 20px;">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <div>
+                    <div style="color: #666; font-size: 12px;">Telegram</div>
+                    <div style="font-weight: 500;"><a href="https://t.me/masanduo1" target="_blank" style="color: #007BFF; text-decoration: none;">@masanduo1</a></div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div style="width: 50px; height: 50px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #007BFF; font-size: 20px;">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <div style="color: #666; font-size: 12px;">邮箱</div>
+                    <div style="font-weight: 500;"><a href="mailto:flybabyaile@gmail.com" style="color: #007BFF; text-decoration: none;">flybabyaile@gmail.com</a></div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div style="width: 50px; height: 50px; background: rgba(0,123,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #007BFF; font-size: 20px;">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                    <div style="color: #666; font-size: 12px;">服务时间</div>
+                    <div style="font-weight: 500;">24/7 全天候响应</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-// 语言切换功能
-document.addEventListener('DOMContentLoaded', function() {
-    const zhBtn = document.querySelector('.lang-btn:nth-child(1)');
-    const enBtn = document.querySelector('.lang-btn:nth-child(2)');
-    
-    zhBtn.addEventListener('click', function() {
-        zhBtn.classList.add('active');
-        enBtn.classList.remove('active');
-        // 这里可以添加中文内容切换逻辑
-    });
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2026 链安科技 ChainSecure Tech. 保留所有权利。</p>
+        <p style="font-size: 12px; color: #999; margin-top: 10px;">区块链安全与资产救援专家 | 成功率99.2%</p>
+    </footer>
 
-    enBtn.addEventListener('click', function() {
-        enBtn.classList.add('active');
-        zhBtn.classList.remove('active');
-        // 这里可以添加英文内容切换逻辑
-    });
-
-    // 导航菜单激活状态
-    const navLinks = document.querySelectorAll('.menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            navLinks.forEach(l => l.style.color = '#555');
-            this.style.color = '#007BFF';
+    <script>
+        // 简单的语言切换
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
-    });
-
-    // 终端命令闪烁效果
-    const prompts = document.querySelectorAll('.prompt');
-    setInterval(() => {
-        prompts.forEach(prompt => {
-            prompt.style.opacity = prompt.style.opacity === '0.7' ? '1' : '0.7';
-        });
-    }, 1000);
-});
-</script>
+    </script>
 </body>
 </html>
