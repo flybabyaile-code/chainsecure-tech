@@ -26,9 +26,11 @@
         
         .hero { display: flex; justify-content: space-between; align-items: center; padding: 80px 100px; max-width: 1400px; margin: 0 auto; }
         .left { max-width: 560px; }
-        h1 { font-size: 64px; line-height: 1.2; font-weight: 700; margin-bottom: 20px; color: #333; }
+
+        #tag { font-size: 14px; color: #007BFF; font-weight: 500; margin-bottom: 15px; letter-spacing: 0.5px; }
+        h1 { font-size: 56px; line-height: 1.2; font-weight: 700; margin-bottom: 20px; color: #333; }
         .blue { color: #007BFF; }
-        .desc { margin-top: 25px; color: #666; line-height: 1.6; font-size: 18px; margin-bottom: 35px; }
+        .desc { margin-top: 25px; color: #666; line-height: 1.6; font-size: 16px; margin-bottom: 35px; }
         .btns { margin-top: 35px; display: flex; gap: 15px; }
         .btn { display: inline-block; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 500; font-size: 16px; }
 
@@ -114,7 +116,7 @@
             .menu { gap: 20px; flex-wrap: wrap; justify-content: center; }
             .hero { padding: 40px 20px; flex-direction: column; text-align: center; }
             .cards { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
-            h1 { font-size: 42px; }
+            h1 { font-size: 36px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .cases-grid { grid-template-columns: 1fr; }
             .partners-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, auto); }
@@ -152,8 +154,8 @@
     <!-- 英雄区域 -->
     <section class="hero">
         <div class="left">
-            <div id="tag">链上资产安全守护者 · On-chain Asset Guardian</div>
-            <h1 id="hero-title">区块链资产<br><span class="blue">绝对安全</span><br>实时追踪 · 快速恢复</h1>
+            <div id="tag">资产安全守护者 · Asset Guardian</div>
+            <h1 id="hero-title">链上资产<br><span class="blue">交易所风控</span><br>实时追踪 · 快速恢复</h1>
             <p id="hero-desc">专业链上安全解决方案，99.2%成功率保障您的数字资产安全</p>
             <div class="btns">
                 <a href="#services" class="btn primary" id="btn-primary">开始追踪</a>
@@ -598,7 +600,7 @@
             document.getElementById('logo-text').textContent = '链安科技';
             
             // 英雄区域
-            document.getElementById('hero-title').innerHTML = '区块链资产<br><span class="blue">绝对安全</span><br>实时追踪 · 快速恢复';
+            document.getElementById('hero-title').innerHTML = '链上资产<br><span class="blue">交易所风控</span><br>实时追踪 · 快速恢复';
             document.getElementById('hero-desc').textContent = '专业链上安全解决方案，99.2%成功率保障您的数字资产安全';
             document.getElementById('btn-primary').textContent = '开始追踪';
             document.getElementById('btn-secondary').textContent = '联系我们';
@@ -678,7 +680,7 @@
             document.getElementById('logo-text').textContent = 'ChainSecure Tech';
             
             // 英雄区域
-            document.getElementById('hero-title').innerHTML = 'Make On-chain Assets<br><span class="blue">More Secure</span><br>Traceable · Recoverable';
+            document.getElementById('hero-title').innerHTML = 'On-chain Assets<br><span class="blue">Exchange Risk Control</span><br>Real-time Tracking · Fast Recovery';
             document.getElementById('hero-desc').textContent = 'ChainSecure Tech is committed to building on-chain security infrastructure, providing address tracking, asset analysis, risk removal, and asset rescue services, making blockchain assets truly controllable, verifiable, and recoverable.';
             document.getElementById('btn-primary').textContent = 'Start Tracking';
             document.getElementById('btn-secondary').textContent = 'Contact Us';
