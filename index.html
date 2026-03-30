@@ -17,6 +17,11 @@
         
         .lang-switch { display: flex; gap: 8px; }
         .lang-btn { background: rgba(0,123,255,0.1); color: #007BFF; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid rgba(0,123,255,0.2); transition: all 0.3s; }
+
+        .lang-btn:hover {
+            background: rgba(0,123,255,0.15);
+        }
+            transition: all 0.3s ease;
         .lang-btn:hover { background: rgba(0,123,255,0.15); }
         .lang-btn.active { background: #007BFF; color: white; }
         
@@ -27,20 +32,52 @@
         .desc { margin-top: 25px; color: #666; line-height: 1.6; font-size: 18px; margin-bottom: 35px; }
         .btns { margin-top: 35px; display: flex; gap: 15px; }
         .btn { display: inline-block; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 500; font-size: 16px; }
+
+        .primary:hover {
+            background: linear-gradient(135deg, #0066CC, #00B2FF);
+            transform: translateY(-2px);
+        }
+        
+        .secondary:hover {
+            background: rgba(0,123,255,0.05);
+            transform: translateY(-2px);
+        }
+            transition: all 0.3s ease;
         .primary { background: linear-gradient(135deg, #007BFF, #00C6FF); color: white; }
         .secondary { border: 2px solid #007BFF; color: #007BFF; }
         
         .cards { display: grid; grid-template-columns: repeat(2, 240px); gap: 25px; }
         .card { background: white; border: 1px solid rgba(0,123,255,0.25); padding: 25px; border-radius: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        .card:hover {
+            background: rgba(0,123,255,0.03);
+            border-color: rgba(0,123,255,0.4);
+            transform: translateY(-2px);
+        }
+            transition: all 0.3s ease;
         
         .stats { padding: 60px 0; background: linear-gradient(135deg, #007BFF, #00C6FF); color: white; text-align: center; }
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto; }
         
         .terminal { background: white; border: 1px solid rgba(0,123,255,0.25); border-radius: 16px; padding: 30px; margin: 40px auto; max-width: 1000px; box-shadow: 0 10px 30px rgba(0,123,255,0.1); }
+
+        .terminal:hover {
+            background: rgba(0,123,255,0.02);
+            border-color: rgba(0,123,255,0.4);
+            transform: translateY(-2px);
+        }
+            transition: all 0.3s ease;
         
         .cases { padding: 80px 0; background: #f8fafc; }
         .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; max-width: 1400px; margin: 40px auto 0; padding: 0 20px; }
         .case-card { background: white; border: 1px solid rgba(0,123,255,0.2); border-radius: 16px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        .case-card:hover {
+            background: rgba(0,123,255,0.03);
+            border-color: rgba(0,123,255,0.4);
+            transform: translateY(-2px);
+        }
+            transition: all 0.3s ease;
         .case-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,123,255,0.1); }
         .case-title { font-size: 18px; font-weight: 600; color: #333; }
         .case-amount { font-size: 16px; font-weight: 600; color: #007BFF; }
@@ -56,10 +93,24 @@
         .partners { padding: 80px 0; background: white; text-align: center; }
         .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, auto); gap: 30px; max-width: 1200px; margin: 40px auto 0; padding: 0 20px; }
         .partner-card { background: white; border: 1px solid rgba(0,123,255,0.15); border-radius: 16px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+
+        .partner-card:hover {
+            background: rgba(0,123,255,0.03);
+            border-color: rgba(0,123,255,0.4);
+            transform: translateY(-2px);
+        }
+            transition: all 0.3s ease;
         
         .contact { padding: 80px 0; text-align: center; }
         .contact-horizontal { display: flex; justify-content: center; gap: 40px; max-width: 1000px; margin: 40px auto 0; }
         .contact-item { flex: 1; max-width: 200px; }
+
+        .contact-item:hover {
+            background: rgba(0,123,255,0.03);
+            border-color: rgba(0,123,255,0.4);
+            transform: translateY(-2px);
+        }
+            transition: all 0.3s ease;
         
         .footer { text-align: center; padding: 40px 20px; color: #666; border-top: 1px solid #eee; background: #f8fafc; }
         
@@ -74,6 +125,13 @@
             .partners-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, auto); }
             .contact-horizontal { flex-direction: column; gap: 20px; }
             .terminal { margin: 20px; padding: 20px; }
+
+        .terminal:hover {
+            background: rgba(0,123,255,0.02);
+            border-color: rgba(0,123,255,0.4);
+            transform: translateY(-2px);
+        }
+            transition: all 0.3s ease;
         }
     </style>
 </head>
