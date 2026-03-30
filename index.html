@@ -10,7 +10,8 @@
         body { background: #ffffff; color: #333; line-height: 1.6; }
         
         .nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; border-bottom: 1px solid #eee; background: white; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-weight: 600; font-size: 18px; color: #007BFF; display: flex; align-items: center; gap: 10px; }
+        .logo { font-weight: 600; font-size: 18px; color: #007BFF; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: transform 0.3s ease; }
+        .logo:hover { transform: scale(1.05); }
         .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #007BFF, #00C6FF); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; }
         .menu { display: flex; gap: 35px; }
         .menu a { text-decoration: none; color: #555; font-weight: 500; font-size: 15px; }
@@ -283,7 +284,7 @@
 <body>
     <!-- 导航栏 -->
     <nav class="nav">
-        <div class="logo">
+        <div class="logo" id="logo-home">
             <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
             <span id="logo-text">链安科技</span>
         </div>
@@ -937,6 +938,7 @@
             const menu = document.getElementById('menu');
             const menuOverlay = document.getElementById('menuOverlay');
             const menuLinks = document.querySelectorAll('.menu a');
+            const logoHome = document.getElementById('logo-home');
             
             // 切换菜单显示/隐藏
             function toggleMenu() {
@@ -944,6 +946,20 @@
                 menuOverlay.classList.toggle('active');
                 document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
             }
+            
+            // 点击logo回到顶部
+            logoHome.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // 如果是移动端且菜单打开，关闭菜单
+                if (window.innerWidth <= 768 && menu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
             
             // 点击汉堡菜单
             hamburger.addEventListener('click', toggleMenu);
