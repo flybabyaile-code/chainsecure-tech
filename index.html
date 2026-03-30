@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>链安科技 | 区块链安全与资产救援专家</title>
+<title>ChainSecure Tech | Blockchain Security & Asset Recovery Experts</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial;}
@@ -40,7 +40,6 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .card p{color:#666;font-size:14px;margin-top:5px;}
 .money{margin-top:10px;color:#007BFF;font-weight:bold;font-size:16px;}
 
-/* 修改下半部分为浅色主题 */
 .light-section{background:#ffffff;color:#333;padding:60px 0;}
 .terminal-panel{background:#fff;border:1px solid rgba(0,123,255,0.25);border-radius:16px;padding:30px;margin:40px 60px;box-shadow:0 10px 30px rgba(0,123,255,0.1);}
 .terminal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid rgba(0,123,255,0.2);}
@@ -59,7 +58,7 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .section-header{text-align:center;margin-bottom:50px;}
 .section-title{font-size:42px;font-weight:700;margin-bottom:15px;background:linear-gradient(135deg,#007BFF,#00C6FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .section-subtitle{font-size:16px;color:#666;max-width:600px;margin:0 auto;}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:25px;max-width:1400px;margin:0 auto;}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px;max-width:1200px;margin:0 auto;}
 .service-card{background:#fff;border:1px solid rgba(0,123,255,0.25);border-radius:16px;padding:30px;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.05);}
 .service-card:hover{transform:translateY(-8px);border-color:#007BFF;box-shadow:0 15px 35px rgba(0,123,255,0.15);}
 .card-title{font-size:20px;font-weight:600;margin-bottom:12px;color:#333;}
@@ -72,6 +71,27 @@ h1{font-size:64px;line-height:1.2;font-weight:700;margin-bottom:20px;}
 .card-price span{font-size:14px;color:#666;font-weight:normal;}
 .card-action{padding:8px 20px;background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.3);border-radius:8px;color:#007BFF;text-decoration:none;font-size:14px;font-weight:500;transition:0.3s;}
 .card-action:hover{background:#007BFF;color:white;}
+
+.cases-section{padding:60px 0;background:#f8fafc;}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:30px;max-width:1400px;margin:0 auto;}
+.case-card{background:#fff;border:1px solid rgba(0,123,255,0.2);border-radius:16px;padding:30px;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.05);}
+.case-card:hover{transform:translateY(-5px);border-color:#007BFF;box-shadow:0 10px 30px rgba(0,123,255,0.15);}
+.case-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid rgba(0,123,255,0.1);}
+.case-title{font-size:18px;font-weight:600;color:#007BFF;}
+.case-badge{background:rgba(0,123,255,0.1);color:#007BFF;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:500;}
+.case-details{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-bottom:20px;}
+.case-detail-item{display:flex;flex-direction:column;gap:5px;}
+.detail-label{font-size:12px;color:#666;font-weight:500;}
+.detail-value{font-size:14px;color:#333;font-weight:600;font-family:'Monaco',monospace;}
+.case-overview{background:rgba(0,123,255,0.05);padding:15px;border-radius:8px;margin:15px 0;border-left:3px solid #007BFF;}
+.case-overview-title{font-size:14px;font-weight:600;color:#007BFF;margin-bottom:8px;}
+.case-overview-text{font-size:13px;color:#666;line-height:1.5;}
+.case-solution{background:rgba(0,123,255,0.05);padding:15px;border-radius:8px;margin:15px 0;border-left:3px solid #00C853;}
+.case-solution-title{font-size:14px;font-weight:600;color:#00C853;margin-bottom:8px;}
+.case-solution-text{font-size:13px;color:#666;line-height:1.5;}
+.case-result{background:rgba(0,123,255,0.05);padding:15px;border-radius:8px;margin:15px 0;border-left:3px solid #9C27B0;}
+.case-result-title{font-size:14px;font-weight:600;color:#9C27B0;margin-bottom:8px;}
+.case-result-text{font-size:13px;color:#666;line-height:1.5;}
 
 .contact-info{margin:40px 0;padding:30px;background:rgba(0,123,255,0.05);border-radius:16px;border:1px solid rgba(0,123,255,0.3);text-align:center;}
 .contact-title{color:#007BFF;font-size:24px;font-weight:600;margin-bottom:20px;}
@@ -95,160 +115,57 @@ h1{font-size:42px;}
 .terminal-panel{margin:20px;padding:20px;}
 .services-section{padding:40px 20px;}
 .services-grid{grid-template-columns:1fr;}
+.cases-section{padding:40px 20px;}
+.cases-grid{grid-template-columns:1fr;}
+.case-details{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 <section class="hero-section">
 <nav class="nav">
-<div class="logo"><div class="logo-icon"><i class="fas fa-shield-alt"></i></div><span>链安科技</span></div>
-<div class="menu"><a href="#services">服务项目</a><a href="#dashboard">系统状态</a><a href="#contact">联系我们</a></div>
+<div class="logo"><div class="logo-icon"><i class="fas fa-shield-alt"></i></div><span>ChainSecure Tech</span></div>
+<div class="menu"><a href="#services">Services</a><a href="#dashboard">System Status</a><a href="#cases">Case Studies</a><a href="#contact">Contact</a></div>
 <div class="status"><div class="status-dot"></div><span>System Live · Secure Nodes</span></div>
 </nav>
 <div class="hero">
 <div class="left">
-<div class="tag">链上安全协议 · Chain Security Protocol</div>
-<h1>让链上资产<br><span class="blue">更安全</span><br>可追踪 · 可恢复</h1>
-<p class="desc">链安科技致力于构建链上安全基础设施，提供地址追踪、资产分析、风险解除与资产救援服务，让区块链资产真正可控、可查、可追回。</p>
-<div class="btns"><a href="#services" class="btn primary">开始追踪</a><a href="#contact" class="btn secondary">联系我们</a></div>
+<div class="tag">Chain Security Protocol · 链上安全协议</div>
+<h1>Make On-chain Assets<br><span class="blue">More Secure</span><br>Traceable · Recoverable</h1>
+<p class="desc">ChainSecure Tech is dedicated to building on-chain security infrastructure, providing address tracking, asset analysis, risk removal, and asset rescue services, making blockchain assets truly controllable, traceable, and recoverable.</p>
+<div class="btns"><a href="#services" class="btn primary">Start Tracking</a><a href="#contact" class="btn secondary">Contact Us</a></div>
 </div>
 <div class="cards">
-<div class="card"><div class="dot green"></div><h3>Trace Engine</h3><p>链上追踪</p><div class="money">Active</div></div>
-<div class="card"><div class="dot green"></div><h3>Risk Control</h3><p>风控解除</p><div class="money">Running</div></div>
-<div class="card"><div class="dot yellow"></div><h3>Recovery</h3><p>资产救援</p><div class="money">Processing</div></div>
-<div class="card"><div class="dot green"></div><h3>Data Scan</h3><p>链上分析</p><div class="money">Online</div></div>
+<div class="card"><div class="dot green"></div><h3>Trace Engine</h3><p>On-chain Tracking</p><div class="money">Active</div></div>
+<div class="card"><div class="dot green"></div><h3>Risk Control</h3><p>Risk Removal</p><div class="money">Running</div></div>
+<div class="card"><div class="dot yellow"></div><h3>Recovery</h3><p>Asset Rescue</p><div class="money">Processing</div></div>
+<div class="card"><div class="dot green"></div><h3>Data Scan</h3><p>Chain Analysis</p><div class="money">Online</div></div>
 </div>
 </div>
 </section>
 
 <section class="light-section">
 <section id="dashboard" class="terminal-panel">
-<div class="terminal-header"><div class="terminal-title"><i class="fas fa-terminal"></i><span>安全控制中心 v2.6.1</span></div></div>
+<div class="terminal-header"><div class="terminal-title"><i class="fas fa-terminal"></i><span>Security Control Center v2.6.1</span></div></div>
 <div class="terminal-content">
 <div class="terminal-line"><div class="prompt">root@chainsecure:~$</div><div class="command">system status --full</div></div>
-<div class="output success">✓ 系统状态: 在线 (所有服务正常运行)</div>
-<div class="output success">✓ 安全监控: 启用 (实时威胁检测中)</div>
-<div class="output success">✓ 节点网络: 稳定 (全球12个节点)</div>
+<div class="output success">✓ System Status: Online (All services running normally)</div>
+<div class="output success">✓ Security Monitoring: Enabled (Real-time threat detection)</div>
+<div class="output success">✓ Node Network: Stable (12 global nodes)</div>
 <div class="terminal-line"><div class="prompt">root@chainsecure:~$</div><div class="command">case stats --today</div></div>
-<div class="output">📊 今日案件统计:</div>
-<div class="output processing">• 处理中: 24 件</div>
-<div class="output success">• 已解决: 8 件</div>
-<div class="output warning">• 待审核: 12 件</div>
+<div class="output">📊 Today's Case Statistics:</div>
+<div class="output processing">• Processing: 24 cases</div>
+<div class="output success">• Resolved: 8 cases</div>
+<div class="output warning">• Pending Review: 12 cases</div>
 </div>
 </section>
 </section>
 
 <section id="services" class="services-section">
-<div class="section-header"><h2 class="section-title">专业区块链安全服务</h2><p class="section-subtitle">我们提供全方位的区块链安全解决方案</p></div>
+<div class="section-header"><h2 class="section-title">Professional Blockchain Security Services</h2><p class="section-subtitle">We provide comprehensive blockchain security solutions</p></div>
 <div class="services-grid">
 <div class="service-card">
-<h3 class="card-title">交易所风控解除</h3>
-<p class="card-description">专业解决各大交易所账户异常问题，包括交易限制、提币限制、登录问题、KYC验证等。</p>
+<h3 class="card-title">Exchange Risk Control Removal</h3>
+<p class="card-description">Professional solutions for exchange account issues including trading restrictions, withdrawal limits, login problems, KYC verification, etc.</p>
 <div class="card-features">
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>交易限制解除</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>提币限制解除</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>账户冻结解冻</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>KYC验证协助</span></div>
-</div>
-<div class="card-footer"><div class="card-price">$500+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">立即咨询</a></div>
-</div>
-<div class="service-card">
-<h3 class="card-title">链上资产追回</h3>
-<p class="card-description">专业追踪和追回被盗加密货币资产，包括黑客攻击、钓鱼诈骗、私钥泄露等案件。</p>
-<div class="card-features">
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>黑客攻击资产追踪</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>钓鱼诈骗资金追回</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>私钥泄露资产保护</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>合约漏洞资金恢复</span></div>
-</div>
-<div class="card-footer"><div class="card-price">15% <span>追回金额</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">案件评估</a></div>
-</div>
-<div class="service-card">
-<h3 class="card-title">数据恢复服务</h3>
-<p class="card-description">专业恢复丢失的加密货币相关数据，包括助记词、私钥、钱包文件、交易记录等。</p>
-<div class="card-features">
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>助记词部分丢失恢复</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>私钥文件恢复</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>手机/电脑数据恢复</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>硬盘损坏数据恢复</span></div>
-</div>
-<div class="card-footer"><div class="card-price">$300+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">数据评估</a></div>
-</div>
-<div class="service-card">
-<h3 class="card-title">法律维权服务</h3>
-<p class="card-description">提供专业的法律支持，包括诈骗案件立案、债务纠纷诉讼、合规咨询等法律服务。</p>
-<div class="card-features">
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>诈骗案件立案协助</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>债务纠纷诉讼代理</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>合规咨询与风险评估</span></div>
-<div class="feature-item"><i class="fas fa-check-circle"></i><span>法律文件起草审核</span></div>
-</div>
-<div class="card-footer"><div class="card-price">$800+ <span>起/案件</span></div><a href="https://t.me/masanduo1" target="_blank" class="card-action">法律咨询</a></div>
-</div>
-</div>
-
-<section id="contact" class="light-section">
-<div class="contact-info">
-<h3 class="contact-title">联系我们</h3>
-<div class="contact-methods">
-<div class="contact-method">
-<div class="contact-icon"><i class="fas fa-paper-plane"></i></div>
-<div class="contact-details">
-<div class="contact-label">Telegram</div>
-<div class="contact-value"><a href="https://t.me/masanduo1" target="_blank" class="contact-link">@masanduo1</a></div>
-</div>
-</div>
-<div class="contact-method">
-<div class="contact-icon"><i class="fas fa-envelope"></i></div>
-<div class="contact-details">
-<div class="contact-label">邮箱</div>
-<div class="contact-value">contact@chainsecure.tech</div>
-</div>
-</div>
-<div class="contact-method">
-<div class="contact-icon"><i class="fas fa-clock"></i></div>
-<div class="contact-details">
-<div class="contact-label">服务时间</div>
-<div class="contact-value">24/7 全天候响应</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<footer style="text-align:center;padding:30px;color:#666;font-size:14px;border-top:1px solid #eee;margin-top:40px;">
-<p>© 2026 链安科技 ChainSecure Tech. 保留所有权利。</p>
-<p style="margin-top:10px;font-size:12px;color:#999;">区块链安全与资产救援专家 | 成功率99.2%</p>
-</footer>
-
-<script>
-// 简单的动画效果
-document.addEventListener('DOMContentLoaded', function() {
-// 卡片悬停效果增强
-const cards = document.querySelectorAll('.card, .service-card');
-cards.forEach(card => {
-card.addEventListener('mouseenter', () => {
-card.style.transition = 'all 0.3s ease';
-});
-});
-
-// 导航菜单激活状态
-const navLinks = document.querySelectorAll('.menu a');
-navLinks.forEach(link => {
-link.addEventListener('click', function(e) {
-navLinks.forEach(l => l.style.color = '#555');
-this.style.color = '#007BFF';
-});
-});
-
-// 终端命令闪烁效果
-const prompts = document.querySelectorAll('.prompt');
-setInterval(() => {
-prompts.forEach(prompt => {
-prompt.style.opacity = prompt.style.opacity === '0.7' ? '1' : '0.7';
-});
-}, 1000);
-});
-</script>
-</body>
-</html>
+<div
